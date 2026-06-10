@@ -7,7 +7,7 @@ from app.models.user_model import User
 from app.models.wallet_model import Wallet
 from app.models.transaction_model import Transaction
 from app.models.category_model import Category
-from app.routers import auth_router, wallet_router
+from app.routers import auth_router, wallet_router, category_router
 
 
 @asynccontextmanager
@@ -21,6 +21,7 @@ app = FastAPI(lifespan=lifespan)
 
 app.include_router(auth_router.router, prefix="/api/auth", tags=["user"])
 app.include_router(wallet_router.router, prefix="/api/wallet", tags=["wallet"])
+app.include_router(category_router.router, prefix="/api/category", tags=["category"])
 
 
 @app.get("/")

@@ -16,6 +16,7 @@ class User(Base):
 
     wallets: Mapped[list["Wallet"]] = relationship(back_populates="user")
     transactions: Mapped[list["Transaction"]] = relationship(back_populates="user")
+    categories: Mapped[list["Category"]] = relationship(back_populates="user")
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
