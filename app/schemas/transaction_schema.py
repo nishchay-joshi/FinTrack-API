@@ -17,3 +17,11 @@ class TransactionResponse(TransactionCreate):
 
     id: int
     timestamp: datetime
+
+
+class TransactionUpdate(BaseModel):
+    wallet_id: int | None = None
+    category_id: int | None = None
+    amount: float | None = None
+    transaction_type: Literal["income", "expense"] | None = None
+    note: str | None = None
