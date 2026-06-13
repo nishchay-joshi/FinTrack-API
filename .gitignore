@@ -12,3 +12,6 @@ frontend/dist/
 
 # OS / IDE
 .idea/
+
+#others
+testing_credentials.txt

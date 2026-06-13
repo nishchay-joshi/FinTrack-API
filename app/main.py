@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.database.database import engine
 from app.database.base import Base
@@ -23,6 +24,16 @@ app.include_router(auth_router.router, prefix="/api/auth", tags=["user"])
 app.include_router(wallet_router.router, prefix="/api/wallet", tags=["wallet"])
 app.include_router(category_router.router, prefix="/api/category", tags=["category"])
 app.include_router(transaction_router.router, prefix="/api/transaction", tags=["transaction"])
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
