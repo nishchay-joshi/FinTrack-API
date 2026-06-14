@@ -1,0 +1,152 @@
+.dashboard-container {
+    min-height: 100vh;
+    padding: 32px;
+
+    background-image: url("../assets/dashboard.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    color: white;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 24px;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.dashboard-header p {
+    margin-top: 4px;
+    margin-bottom: 0;
+
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.95rem;
+}
+
+.wallet-form {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    margin-bottom: 28px;
+
+    padding: 18px;
+
+    background: rgba(10, 10, 20, 0.35);
+    backdrop-filter: blur(16px);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+}
+
+.wallet-name,
+.wallet-type {
+    flex: 1;
+    min-width: 220px;
+
+    padding: 12px 14px;
+
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+    font-size: 0.95rem;
+}
+
+.wallet-name::placeholder,
+.wallet-type::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+.wallet-name:focus,
+.wallet-type:focus {
+    outline: none;
+    border-color: rgba(255,255,255,0.35);
+}
+
+.create-wallet-button {
+    padding: 12px 18px;
+
+    border: none;
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    background: rgba(255,255,255,0.15);
+    color: white;
+
+    font-weight: 600;
+
+    backdrop-filter: blur(12px);
+}
+
+.create-wallet-button:hover {
+    background: rgba(255,255,255,0.22);
+}
+
+.logout-button {
+    padding: 10px 18px;
+
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.15);
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+    cursor: pointer;
+
+    backdrop-filter: blur(12px);
+}
+
+.logout-button:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.wallet-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(280px, 1fr));
+
+    gap: 18px;
+}
+
+.wallet-card {
+    padding: 20px;
+
+    background: rgba(10, 10, 20, 0.35);
+    backdrop-filter: blur(18px);
+
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.1);
+
+    transition: transform 0.2s ease;
+}
+
+.wallet-card:hover {
+    transform: translateY(-3px);
+}
+
+.wallet-card h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+
+    font-size: 1.25rem;
+}
+
+.wallet-card p {
+    margin: 8px 0;
+    color: rgba(255,255,255,0.85);
+}
