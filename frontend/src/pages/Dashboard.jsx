@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../services/api.js";
 import "./dashboard.css"
 
@@ -15,6 +16,7 @@ function Dashboard({setToken}) {
     const [walletId, setWalletId] = useState("");
     const [categoryId, setCategoryId] = useState("");
     const [note, setNote] = useState("");
+    const navigate = useNavigate();
 
     function handleLogout() {
         localStorage.removeItem('access_token');
@@ -184,12 +186,21 @@ function Dashboard({setToken}) {
                     <p>
                         <strong>Balance:</strong> ₹{wallet.balance}
                     </p>
+                    <div className="wallet-actions">
+                    <button
+                        className="view-wallet-button"
+                        onClick={() => navigate(`/wallet/${wallet.id}`)}
+                    >
+                        View Wallet
+                    </button>
                     <button
                         className="delete-wallet-button"
                         onClick={() => handleDeleteWallet(wallet.id)}
                     >
                         Delete
                     </button>
+
+                </div>
                 </div>
             ))}
         </div>
