@@ -1,7 +1,7 @@
 import { useState } from "react";
 import api from "../services/api";
 import backgroundImage from "../assets/background.jpg";
-import "./Login.css";
+import "../styles/Login.css";
 
 function Login({setToken}) {
   const [email, setEmail] = useState("");
