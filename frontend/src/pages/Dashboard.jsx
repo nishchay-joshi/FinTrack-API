@@ -26,8 +26,6 @@ function Dashboard({setToken}) {
     async function getWallets() {
         try {
             const response = await api.get("/api/wallet/");
-            console.log("RESPONSE:", response);
-            console.log("DATA:", response.data);
             setWallets(response.data);
         } catch (error) {
             console.error("ERROR:", error);
@@ -57,20 +55,18 @@ function Dashboard({setToken}) {
     }
 
     async function handleDeleteWallet(walletId) {
-    try {
-        await api.delete(`/api/wallet/${walletId}`);
+        try {
+            await api.delete(`/api/wallet/${walletId}`);
 
-        await getWallets();
-    } catch (error) {
-        console.error(error);
+            await getWallets();
+        } catch (error) {
+            console.error(error);
+        }
     }
-}
 
     async function getCategories() {
         try {
             const response = await api.get("/api/category/");
-            console.log("RESPONSE:", response);
-            console.log("DATA:", response.data);
             setCategories(response.data);
         }
         catch(error) {
@@ -94,12 +90,12 @@ function Dashboard({setToken}) {
 
     async function handleDeleteCategory(categoryId) {
         try {
-        await api.delete(`/api/category/${categoryId}`);
+            await api.delete(`/api/category/${categoryId}`);
 
-        await getCategories();
-    } catch (error) {
-        console.error(error);
-    }
+            await getCategories();
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     async function getTransactions() {

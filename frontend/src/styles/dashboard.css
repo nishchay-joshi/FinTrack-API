@@ -1,12 +1,10 @@
 .dashboard-container {
     min-height: 100vh;
     padding: 32px;
-
     background-image: url("../assets/dashboard.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-
     color: white;
 }
 
@@ -14,7 +12,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     margin-bottom: 24px;
 }
 
@@ -28,7 +25,6 @@
 .dashboard-header p {
     margin-top: 4px;
     margin-bottom: 0;
-
     color: rgba(255, 255, 255, 0.75);
     font-size: 0.95rem;
 }
@@ -37,14 +33,10 @@
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
-
     margin-bottom: 28px;
-
     padding: 18px;
-
     background: rgba(10, 10, 20, 0.35);
     backdrop-filter: blur(16px);
-
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 18px;
 }
@@ -53,14 +45,10 @@
 .wallet-type {
     flex: 1;
     min-width: 220px;
-
     padding: 12px 14px;
-
     border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.12);
-
     background: rgba(255,255,255,0.08);
-
     color: white;
     font-size: 0.95rem;
 }
@@ -78,17 +66,12 @@
 
 .create-wallet-button {
     padding: 12px 18px;
-
     border: none;
     border-radius: 12px;
-
     cursor: pointer;
-
     background: rgba(255,255,255,0.15);
     color: white;
-
     font-weight: 600;
-
     backdrop-filter: blur(12px);
 }
 
@@ -98,15 +81,11 @@
 
 .logout-button {
     padding: 10px 18px;
-
     border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.15);
-
     background: rgba(255,255,255,0.08);
-
     color: white;
     cursor: pointer;
-
     backdrop-filter: blur(12px);
 }
 
@@ -116,22 +95,16 @@
 
 .wallet-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(auto-fill, minmax(280px, 1fr));
-
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 18px;
 }
 
 .wallet-card {
     padding: 20px;
-
     background: rgba(10, 10, 20, 0.35);
     backdrop-filter: blur(18px);
-
     border-radius: 18px;
     border: 1px solid rgba(255,255,255,0.1);
-
     transition: transform 0.2s ease;
 }
 
@@ -142,7 +115,6 @@
 .wallet-card h3 {
     margin-top: 0;
     margin-bottom: 12px;
-
     font-size: 1.25rem;
 }
 
@@ -153,20 +125,13 @@
 
 .delete-wallet-button {
     margin-top: 12px;
-
     width: 100%;
-
     padding: 10px;
-
     border-radius: 10px;
-
     cursor: pointer;
-
     background: rgba(239, 68, 68, 0.2);
     color: white;
-
     border: 1px solid rgba(239, 68, 68, 0.4);
-
     transition: all 0.2s ease;
 }
 
@@ -188,14 +153,10 @@
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
-
     margin-bottom: 24px;
-
     padding: 18px;
-
     background: rgba(10, 10, 20, 0.35);
     backdrop-filter: blur(16px);
-
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 18px;
 }
@@ -203,14 +164,10 @@
 .category-input {
     flex: 1;
     min-width: 240px;
-
     padding: 12px 14px;
-
     border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.12);
-
     background: rgba(255,255,255,0.08);
-
     color: white;
 }
 
@@ -225,17 +182,12 @@
 
 .create-category-button {
     padding: 12px 18px;
-
     border: none;
     border-radius: 12px;
-
     cursor: pointer;
-
     background: rgba(255,255,255,0.15);
     color: white;
-
     font-weight: 600;
-
     backdrop-filter: blur(12px);
 }
 
@@ -245,19 +197,14 @@
 
 .category-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(auto-fill, minmax(220px, 1fr));
-
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 18px;
 }
 
 .category-card {
     padding: 18px;
-
     background: rgba(10, 10, 20, 0.35);
     backdrop-filter: blur(18px);
-
     border-radius: 18px;
     border: 1px solid rgba(255,255,255,0.1);
 }
@@ -269,14 +216,10 @@
 
 .delete-category-button {
     width: 100%;
-
     padding: 10px;
-
     border: 1px solid rgba(239,68,68,0.4);
     border-radius: 10px;
-
     background: rgba(239,68,68,0.2);
-
     color: white;
     cursor: pointer;
 }
@@ -297,12 +240,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-
     padding: 18px;
-
     background: rgba(10, 10, 20, 0.35);
     backdrop-filter: blur(16px);
-
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 18px;
 }
@@ -311,12 +251,9 @@
 .transaction-select {
     flex: 1;
     min-width: 220px;
-
     padding: 12px;
-
     border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.12);
-
     background: rgba(255,255,255,0.08);
     color: white;
 }
@@ -327,13 +264,10 @@
 
 .create-transaction-button {
     padding: 12px 18px;
-
     border: none;
     border-radius: 12px;
-
     background: rgba(255,255,255,0.15);
     color: white;
-
     cursor: pointer;
     font-weight: 600;
 }
@@ -355,13 +289,10 @@
 
 .view-wallet-button {
     padding: 12px;
-
     border: none;
     border-radius: 12px;
-
     background: rgba(255,255,255,0.15);
     color: white;
-
     cursor: pointer;
 }
 
