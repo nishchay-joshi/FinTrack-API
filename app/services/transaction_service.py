@@ -33,10 +33,7 @@ async def create_transaction(transaction_data: TransactionCreate, current_user: 
     if transaction_data.transaction_type == "income":
         wallet.balance += transaction_data.amount
     else:
-        if transaction_data.amount <= wallet.balance:
-            wallet.balance -= transaction_data.amount
-        else:
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Insufficient funds")
+        wallet.balance -= transaction_data.amount
 
     new_transaction = Transaction(
         user_id=current_user.id,
@@ -148,7 +145,14 @@ async def update_transaction(
             detail="Category not found",
         )
 
-    old_wallet = transaction.wallet
+    result = await db.execute(
+        select(Wallet).where(
+            Wallet.id == transaction.wallet_id,
+            Wallet.user_id == current_user.id,
+        )
+    )
+
+    old_wallet = result.scalars().first()
 
     if transaction.transaction_type == "income":
         old_wallet.balance -= transaction.amount
@@ -158,11 +162,7 @@ async def update_transaction(
     if final_transaction_type == "income":
         final_wallet.balance += final_amount
     else:
-        net_balance = final_wallet.balance - final_amount
-        if net_balance >= 0:
-            final_wallet.balance -= final_amount
-        else:
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Insufficient funds")
+        final_wallet.balance -= final_amount
 
     for field, value in updated_fields.items():
         setattr(transaction, field, value)

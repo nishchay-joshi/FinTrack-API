@@ -2,12 +2,22 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../services/api.js";
 import "../styles/walletPage.css";
+import EditTransactionModal from "../components/EditTransactionModal.jsx";
 
 function WalletPage() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [wallet, setWallet] = useState(null);
     const [transactions, setTransactions] = useState([]);
+    const [wallets, setWallets] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [selectedTransaction, setSelectedTransaction] = useState(null);
+    const [walletId, setWalletId] = useState("");
+    const [categoryId, setCategoryId] = useState("");
+    const [amount, setAmount] = useState("");
+    const [transactionType, setTransactionType] = useState("");
+    const [note, setNote] = useState("");
 
     async function getWalletData() {
         try {
@@ -27,14 +37,65 @@ function WalletPage() {
         }
     }
 
+    async function getWallets() {
+        try {
+            const response = await api.get("/api/wallet/");
+            setWallets(response.data);
+        } catch (error) {
+            console.error("ERROR:", error);
+        }
+    }
+
     useEffect(() => {
         getWalletData();
         getAllTransactions();
+        getCategories();
+        getWallets();
     }, [id]);
 
     const walletTransactions = transactions.filter(
         (transaction) => transaction.wallet_id === Number(id)
     );
+
+    async function getCategories() {
+        try {
+            const response = await api.get("/api/category/");
+            setCategories(response.data);
+        }
+        catch(error) {
+            console.error("ERROR:", error);
+        }
+    }
+
+    function handleEditTransaction(transaction) {
+        console.log(transaction);
+        setSelectedTransaction(transaction);
+        setTransactionType(transaction.transaction_type);
+        setWalletId(transaction.wallet_id);
+        setCategoryId(transaction.category_id);
+        setAmount(transaction.amount);
+        setNote(transaction.note);
+        setIsEditModalOpen(true);
+    }
+
+    async function handleSaveTransaction() {
+        try {
+            await api.patch(`/api/transaction/${selectedTransaction.id}`, {
+                wallet_id: walletId,
+                category_id: categoryId,
+                amount: Number(amount),
+                transaction_type: transactionType,
+                note: note,
+            });
+
+            setIsEditModalOpen(false);
+            await getWalletData();
+            await getAllTransactions();
+            await getWallets();
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <div className="wallet-page-container">
@@ -106,7 +167,7 @@ function WalletPage() {
                                                 <button
                                                     className="edit-button"
                                                     onClick={() =>
-                                                        console.log(transaction.id)
+                                                        handleEditTransaction(transaction)
                                                     }
                                                 >
                                                     Edit
@@ -120,6 +181,27 @@ function WalletPage() {
                     </div>
                 </>
             )}
+
+        <EditTransactionModal
+            isOpen={isEditModalOpen}
+            wallets={wallets}
+            categories={categories}
+            walletId={walletId}
+            setWalletId={setWalletId}
+            categoryId={categoryId}
+            setCategoryId={setCategoryId}
+            amount={amount}
+            setAmount={setAmount}
+            transactionType={transactionType}
+            setTransactionType={setTransactionType}
+            note={note}
+            setNote={setNote}
+            onClose={() => {
+                setIsEditModalOpen(false);
+                setSelectedTransaction(null);
+            }}
+            onSave={handleSaveTransaction}
+        />
         </div>
     );
 }
