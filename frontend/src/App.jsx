@@ -4,7 +4,6 @@ import WalletPage from "./pages/WalletPage";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Register from "./pages/Register.jsx";
-
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 

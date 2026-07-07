@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../services/api.js";
 import "../styles/walletPage.css";
-import EditTransactionModal from "../components/EditTransactionModal.jsx";
+import EditTransactionModal from "../modals/EditTransactionModal.jsx";
 
 function WalletPage() {
     const { id } = useParams();
