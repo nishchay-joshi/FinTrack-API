@@ -1,36 +1,50 @@
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import WalletPage from "./pages/WalletPage";
+import Layout from "./components/Layout";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Register from "./pages/Register.jsx";
 
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
+
     const [token, setToken] = useState(
         localStorage.getItem("access_token")
     );
-
-    if (!token) {
-        return <Login setToken={setToken} />;
-    }
 
     return (
         <BrowserRouter>
             <Routes>
                 <Route
-                    path="/"
-                    element={<Dashboard setToken={setToken} />}
+                    path="/login"
+                    element={
+                        token
+                            ? <Navigate to="/" replace />
+                            : <Login setToken={setToken} />
+                    }
                 />
-
                 <Route
-                    path="/wallet/:id"
-                    element={<WalletPage />}
+                    path="/register"
+                    element={<Register />}
                 />
-
                 <Route
-                    path="*"
-                    element={<Navigate to="/" />}
-                />
+                    element={
+                        <ProtectedRoute token={token}>
+                            <Layout setToken={setToken} />
+                        </ProtectedRoute>
+                    }
+                >
+                    <Route
+                        path="/"
+                        element={<Dashboard />}
+                    />
+                    <Route
+                        path="/wallet/:id"
+                        element={<WalletPage />}
+                    />
+                </Route>
             </Routes>
         </BrowserRouter>
     );

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import api from "../services/api.js";
 import "../styles/dashboard.css"
 
-function Dashboard({setToken}) {
+function Dashboard() {
 
     const [wallets, setWallets] = useState([]);
     const [name, setName] = useState("");
@@ -17,11 +17,6 @@ function Dashboard({setToken}) {
     const [categoryId, setCategoryId] = useState("");
     const [note, setNote] = useState("");
     const navigate = useNavigate();
-
-    function handleLogout() {
-        localStorage.removeItem('access_token');
-        setToken(null);
-    }
 
     async function getWallets() {
         try {
@@ -132,20 +127,6 @@ function Dashboard({setToken}) {
 
     return (
     <div className="dashboard-container">
-        <div className="dashboard-header">
-            <div>
-                <h1>FinTrack</h1>
-                <p>Manage your finances</p>
-            </div>
-
-            <button
-                className="logout-button"
-                onClick={handleLogout}
-            >
-                Logout
-            </button>
-        </div>
-
         <div className="wallet-form">
             <input
                 className="wallet-name"
