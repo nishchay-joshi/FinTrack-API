@@ -1,7 +1,6 @@
 .wallet-page-container {
     min-height: 100vh;
     padding: 50px;
-    background-image: url("../assets/dashboard.jpg");
     background-size: cover;
     background-position: center;
     color: white;
@@ -139,16 +138,11 @@
 
 .edit-button {
     padding: 8px 16px;
-
     border: none;
     border-radius: 10px;
-
     background: rgba(255,255,255,0.12);
-
     color: white;
-
     cursor: pointer;
-
     transition: 0.25s;
 }
 
@@ -158,17 +152,11 @@
 
 .transactions-placeholder {
     padding: 60px;
-
     text-align: center;
-
     border-radius: 18px;
-
     background: rgba(10,10,20,0.35);
     backdrop-filter: blur(18px);
-
     border: 1px solid rgba(255,255,255,0.1);
-
     color: rgba(255,255,255,0.7);
-
     font-size: 1rem;
 }

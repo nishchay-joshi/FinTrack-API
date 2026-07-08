@@ -131,18 +131,3 @@
 .auth-footer a:hover {
     text-decoration: underline;
 }
-
-@media (max-width: 900px) {
-    .login-page {
-        flex-direction: column;
-    }
-    .login-left {
-        padding: 50px 30px;
-    }
-    .login-right {
-        padding: 40px 20px;
-    }
-    .login-card {
-        padding: 36px 28px;
-    }
-}
