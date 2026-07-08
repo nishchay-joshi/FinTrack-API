@@ -27,23 +27,22 @@ function Register() {
             navigate("/login");
         }
 
-        catch(error){
-            if(error.response){
-                setError(
-                    error.response.data.detail ||
-                    "Registration failed."
-                );
+        catch (error) {
+            if (error.response) {
+                const detail = error.response.data.detail;
+                if (Array.isArray(detail)) {
+                    setError(detail[0].msg);
+                } else {
+                    setError(detail);
+                }
+            } else {
+                setError("Unable to connect to server.");
             }
-            else{
-                setError(
-                    "Unable to connect to server."
-                );
-            }
-        }
-        finally{
+        } finally{
             setLoading(false);
         }
     }
+
     return(
         <div className="auth-page">
             <div className="auth-left">
