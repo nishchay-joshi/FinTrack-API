@@ -1,10 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../services/api.js";
-import "../styles/walletPage.css";
-import EditTransactionModal from "../modals/EditTransactionModal.jsx";
+import "../styles/wallet.css";
+import EditTransactionModal from "../components/modals/EditTransactionModal.jsx";
 
-function WalletPage() {
+function WalletDetails() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [wallet, setWallet] = useState(null);
@@ -206,4 +206,4 @@ function WalletPage() {
     );
 }
 
-export default WalletPage;
+export default WalletDetails;

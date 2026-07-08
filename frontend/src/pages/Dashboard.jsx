@@ -2,9 +2,9 @@ import {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api.js";
 import "../styles/dashboard.css"
-import SummaryCards from "../components/SummaryCards";
-import WalletSection from "../components/WalletSection";
-import RecentTransactions from "../components/RecentTransactions";
+import SummaryCards from "../components/dashboard/SummaryCards.jsx";
+import WalletSection from "../components/dashboard/WalletSection.jsx";
+import RecentTransactions from "../components/dashboard/RecentTransactions.jsx";
 
 function Dashboard() {
 
@@ -79,4 +79,5 @@ function Dashboard() {
         </div>
     );
 }
+
 export default Dashboard;

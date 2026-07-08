@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar";
-import "../styles/layout.css";
+import Navbar from "./Navbar.jsx";
+import "../../styles/layout.css";
 
 function Layout({ setToken }) {
     return (
