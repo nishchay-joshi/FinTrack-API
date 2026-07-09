@@ -1,15 +1,15 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar.jsx";
-import "../../styles/layout.css";
+import Sidebar from "./Sidebar";
+import "../../styles/sidebar.css";
 
-function Layout({ setToken }) {
+function Layout() {
+
     return (
-        <div className="layout">
-            <Navbar setToken={setToken} />
-            <main className="page-content">
+        <div className="page">
+            <Sidebar />
+            <main className="main-content">
                 <Outlet />
             </main>
-
         </div>
     );
 }

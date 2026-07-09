@@ -1,6 +1,5 @@
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import WalletDetails from "./pages/WalletDetails.jsx";
 import Layout from "./components/layout/Layout.jsx";
 import ProtectedRoute from "./components/layout/ProtectedRoute.jsx";
 import Register from "./pages/Register.jsx";
@@ -38,10 +37,6 @@ function App() {
                     <Route
                         path="/"
                         element={<Dashboard />}
-                    />
-                    <Route
-                        path="/wallet/:id"
-                        element={<WalletDetails />}
                     />
                 </Route>
             </Routes>

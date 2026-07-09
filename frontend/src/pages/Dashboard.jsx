@@ -1,10 +1,6 @@
 import {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api.js";
-import "../styles/dashboard.css"
-import SummaryCards from "../components/dashboard/SummaryCards.jsx";
-import WalletSection from "../components/dashboard/WalletSection.jsx";
-import RecentTransactions from "../components/dashboard/RecentTransactions.jsx";
 
 function Dashboard() {
 
@@ -58,24 +54,8 @@ function Dashboard() {
     }
 
     return (
-        <div className="dashboard-container">
-            <section className="dashboard-hero">
-                <h1>Dashboard</h1>
-                <p>
-                    Welcome back.
-                </p>
-            </section>
-            <SummaryCards
-                wallets={wallets}
-                transactions={transactions}
-            />
-            <WalletSection
-                wallets={wallets}
-                onDelete={handleDeleteWallet}
-            />
-            <RecentTransactions
-                transactions={transactions}
-            />
+        <div>
+            DASHBOARD
         </div>
     );
 }
