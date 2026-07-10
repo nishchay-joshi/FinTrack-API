@@ -1,31 +1,46 @@
 import "../../styles/dashboard.css";
-import sparkles from "../../assets/doodles/sparkles.svg";
 
-function SummaryCards() {
+function SummaryCards({ wallets, transactions }) {
+
+    const totalBalance = wallets.reduce(
+        (sum, wallet) =>
+            sum + Number(wallet.balance), 0);
+
+    const totalIncome = transactions
+        .filter((transaction) =>
+            transaction.transaction_type === "income")
+        .reduce((sum, transaction) =>
+                sum + Number(transaction.amount), 0);
+
+    const totalExpense = transactions
+        .filter((transaction) =>
+            transaction.transaction_type === "expense")
+        .reduce((sum, transaction) =>
+                sum + Number(transaction.amount), 0);
 
     const cards = [
         {
             title: "Total Balance",
-            value: "₹52,340",
-            subtitle: "Across 5 wallets",
+            value: `₹${totalBalance.toLocaleString("en-IN")}`,
+            subtitle: `Across ${wallets.length} wallets`,
             className: "balance-card"
         },
         {
             title: "Income",
-            value: "₹1,20,000",
-            subtitle: "This Month",
+            value: `₹${totalIncome.toLocaleString("en-IN")}`,
+            subtitle: "All Time",
             className: "income-card"
         },
         {
             title: "Expenses",
-            value: "₹67,660",
-            subtitle: "This Month",
+            value: `₹${totalExpense.toLocaleString("en-IN")}`,
+            subtitle: "All Time",
             className: "expense-card"
         },
         {
             title: "Transactions",
-            value: "14",
-            subtitle: "This Month",
+            value: transactions.length,
+            subtitle: "Total",
             className: "transactions-card"
         }
     ];
@@ -39,22 +54,9 @@ function SummaryCards() {
                 >
                     <div className="summary-tape"></div>
                     <div className="summary-content">
-                        {card.title === "Transactions" && (
-                            <img
-                                src={sparkles}
-                                alt=""
-                                className="summary-sparkles"
-                            />
-                        )}
-                        <h3>
-                            {card.title}
-                        </h3>
-                        <h2>
-                            {card.value}
-                        </h2>
-                        <p>
-                            {card.subtitle}
-                        </p>
+                        <h3>{card.title}</h3>
+                        <h2>{card.value}</h2>
+                        <p>{card.subtitle}</p>
                     </div>
                 </div>
             ))}

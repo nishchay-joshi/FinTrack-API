@@ -1,84 +1,65 @@
+import { Link } from "react-router-dom";
 import "../../styles/dashboard.css";
-import spiral from "../../assets/doodles/spiral.svg";
 
-function RecentTransactions() {
+function RecentTransactions({ transactions, wallets }) {
 
-    const transactions = [
-        {
-            id: 1,
-            date: "15 Jun",
-            title: "Grocery Shopping",
-            wallet: "Cash",
-            amount: "-₹1,200",
-            type: "expense"
-        },
-        {
-            id: 2,
-            date: "14 Jun",
-            title: "Salary",
-            wallet: "Bank",
-            amount: "+₹60,000",
-            type: "income"
-        },
-        {
-            id: 3,
-            date: "13 Jun",
-            title: "Netflix Subscription",
-            wallet: "Bank",
-            amount: "-₹649",
-            type: "expense"
-        },
-        {
-            id: 4,
-            date: "12 Jun",
-            title: "Wallet Transfer",
-            wallet: "Bank → Cash",
-            amount: "⇄ ₹5,000",
-            type: "transfer"
-        },
-        {
-            id: 5,
-            date: "11 Jun",
-            title: "Restaurant",
-            wallet: "Cash",
-            amount: "-₹650",
-            type: "expense"
-        }
-    ];
+    const recentTransactions = [...transactions]
+        .sort((a, b) =>
+                new Date(b.timestamp) -
+                new Date(a.timestamp)
+        ).slice(0, 5);
+
+    const walletLookup = Object.fromEntries(
+        wallets.map((wallet) => [
+            wallet.id,
+            wallet.name
+        ])
+    );
 
     return (
         <section className="paper-panel recent-transactions">
             <div className="panel-header">
-                <div className="transaction-title-wrapper">
-                    <h2>
-                        Recent Transactions
-                    </h2>
-                    <img
-                        src={spiral}
-                        alt=""
-                        className="transaction-spiral"
-                    />
-                </div>
+                <h2>
+                    Recent Transactions
+                </h2>
+                <Link
+                    to="/transactions"
+                    className="panel-link"
+                >
+                    View All
+                </Link>
             </div>
             <div className="transaction-list">
-                {transactions.map((transaction) => (
+                {recentTransactions.map((transaction) => (
                     <div
                         key={transaction.id}
                         className="transaction-row"
                     >
                         <span className="transaction-date">
-                            {transaction.date}
+                            {new Date(transaction.timestamp)
+                                .toLocaleDateString(
+                                    "en-IN",
+                                    {
+                                        day: "numeric",
+                                        month: "short"
+                                    }
+                                )}
                         </span>
                         <span className="transaction-title">
-                            {transaction.title}
+                            {transaction.note || "Untitled"}
                         </span>
                         <span className="transaction-wallet">
-                            {transaction.wallet}
+                            {walletLookup[transaction.wallet_id] ?? "Unknown"}
                         </span>
                         <span
-                            className={`transaction-amount ${transaction.type}`}
+                            className={`transaction-amount ${transaction.transaction_type}`}
                         >
-                            {transaction.amount}
+                            {transaction.transaction_type === "expense"
+                                ? "-"
+                                : transaction.transaction_type === "income"
+                                ? "+"
+                                : "⇄"}
+                            ₹{Number(transaction.amount).toLocaleString("en-IN")}
                         </span>
                     </div>
                 ))}
