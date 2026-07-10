@@ -6,37 +6,10 @@ import {
     TrendingUp
 } from "lucide-react";
 
+import { Link } from "react-router-dom";
 import "../../styles/dashboard.css";
 
-function WalletPreview() {
-
-    const wallets = [
-        {
-            id: 1,
-            name: "Main Wallet",
-            balance: "₹15,230"
-        },
-        {
-            id: 2,
-            name: "Savings",
-            balance: "₹50,000"
-        },
-        {
-            id: 3,
-            name: "Travel Fund",
-            balance: "₹10,500"
-        },
-        {
-            id: 4,
-            name: "Emergency",
-            balance: "₹25,000"
-        },
-        {
-            id: 5,
-            name: "Investments",
-            balance: "₹8,900"
-        }
-    ];
+function WalletPreview({ wallets }) {
 
     const icons = [
         Wallet,
@@ -57,17 +30,18 @@ function WalletPreview() {
     return (
         <section className="paper-panel wallet-preview">
             <div className="panel-header">
-                <div className="wallet-title-wrapper">
-                    <h2>
-                        My Wallets
-                    </h2>
-                </div>
-                <button className="panel-link">
+                <h2>
+                    My Wallets
+                </h2>
+                <Link
+                    to="/wallets"
+                    className="panel-link"
+                >
                     View All
-                </button>
+                </Link>
             </div>
             <div className="wallet-list">
-                {wallets.map((wallet, index) => {
+                {wallets.slice(0, 5).map((wallet, index) => {
                     const Icon = icons[index % icons.length];
                     const color = colors[index % colors.length];
                     return (
@@ -77,17 +51,14 @@ function WalletPreview() {
                         >
                             <div className="wallet-info">
                                 <div className={`wallet-icon ${color}`}>
-                                    <Icon
-                                        size={20}
-                                        strokeWidth={2.2}
-                                    />
+                                    <Icon size={20} />
                                 </div>
                                 <span className="wallet-name">
                                     {wallet.name}
                                 </span>
                             </div>
                             <span className="wallet-balance">
-                                {wallet.balance}
+                                ₹{Number(wallet.balance).toLocaleString("en-IN")}
                             </span>
                         </div>
                     );
