@@ -1,0 +1,96 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-family:"Patrick Hand",cursive;
+    color:var(--text);
+    font-weight:400;
+    line-height:1.1;
+}
+
+h1{
+    font-size:3rem;
+}
+
+h2{
+    font-size:2.2rem;
+}
+
+h3{
+    font-size:1.7rem;
+}
+
+h4{
+    font-size:1.35rem;
+}
+
+h5{
+    font-size:1.1rem;
+}
+
+h6{
+    font-size:1rem;
+}
+
+p{
+    font-size:1rem;
+    line-height:1.7;
+    color:var(--text-light);
+}
+
+small{
+    font-size:.85rem;
+    color:var(--text-light);
+}
+
+label{
+    font-size:.9rem;
+    font-weight:600;
+    color:var(--text);
+}
+
+a{
+    transition:color var(--transition);
+}
+
+strong{
+    font-weight:700;
+}
+
+.text-center{
+    text-align:center;
+}
+
+.text-right{
+    text-align:right;
+}
+
+.text-muted{
+    color:var(--text-light);
+}
+
+.text-success{
+    color:var(--green);
+}
+
+.text-danger{
+    color:var(--red);
+}
+
+.text-warning{
+    color:var(--orange);
+}
+
+.text-primary{
+    color:var(--blue);
+}
+
+.handwritten{
+    font-family:"Patrick Hand",cursive;
+}
+
+.body-text{
+    font-family:"Inter",sans-serif;
+}

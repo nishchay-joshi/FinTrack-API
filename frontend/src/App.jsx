@@ -1,8 +1,7 @@
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import WalletPage from "./pages/WalletPage";
-import Layout from "./components/Layout";
-import ProtectedRoute from "./components/ProtectedRoute";
+import Layout from "./components/layout/Layout.jsx";
+import ProtectedRoute from "./components/layout/ProtectedRoute.jsx";
 import Register from "./pages/Register.jsx";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -38,10 +37,6 @@ function App() {
                     <Route
                         path="/"
                         element={<Dashboard />}
-                    />
-                    <Route
-                        path="/wallet/:id"
-                        element={<WalletPage />}
                     />
                 </Route>
             </Routes>

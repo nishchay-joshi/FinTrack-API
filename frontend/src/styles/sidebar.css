@@ -1,0 +1,199 @@
+.sidebar{
+    width:260px;
+    height:100vh;
+    background-image:url("../assets/textures/sidebar-page.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    position:relative;
+    padding:38px 22px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow:hidden;
+    box-sizing:border-box;
+}
+
+.sidebar-top{
+    position:relative;
+    flex:1;
+}
+
+.sidebar::after{
+    content:"";
+    position:absolute;
+    top:0;
+    right:-16px;
+    width:32px;
+    height:100%;
+    background-size:100% auto;
+    pointer-events:none;
+}
+
+.sidebar-logo{
+    font-family:"Patrick Hand",cursive;
+    font-size:3rem;
+    color:var(--text);
+    margin-bottom:42px;
+}
+
+.sidebar-nav{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.sidebar-link{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:13px 16px;
+    border-radius:14px;
+    color:var(--text-light);
+    position:relative;
+    transition:background var(--transition),color var(--transition);
+}
+
+.sidebar-link svg{
+    flex-shrink:0;
+}
+
+.sidebar-link span{
+    font-family:"Patrick Hand",cursive;
+    font-size:1.15rem;
+}
+
+.sidebar-link:hover{
+    background:rgba(255,255,255,.35);
+    color:var(--text);
+}
+
+.sidebar-link.active{
+    background:#fff8ef;
+    color:var(--text);
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.sidebar-curve{
+    position:absolute;
+    right:14px;
+    top:50%;
+    width:22px;
+    transform:translateY(-50%);
+}
+
+.sidebar-stars{
+    position:absolute;
+    right:18px;
+    top:57%;
+    width:56px;
+    transform:rotate(-8deg);
+}
+
+.sidebar-bottom{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:26px;
+    margin-top:48px;
+}
+
+.paper-card{
+    position:relative;
+    width:180px;
+    transform:rotate(-5deg);
+}
+
+.paper-body{
+    background:#f4ecd3;
+    border-radius:4px;
+    padding:34px 16px 18px;
+    box-shadow:
+        0 10px 24px rgba(0,0,0,.16),
+        inset 0 0 12px rgba(255,255,255,.45);
+    border:1px solid #e8dcc1;
+    position:relative;
+}
+
+.paper-body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:4px;
+    background: radial-gradient(rgba(0,0,0,.025) 1px, transparent 1px);
+    background-size:12px 12px;
+    opacity:.5;
+    pointer-events:none;
+}
+
+.paper-body p{
+    margin:0;
+    text-align:center;
+    font-family:"Patrick Hand",cursive;
+    font-size:1.1rem;
+    line-height:1.6;
+    color:#1f1f1f;
+}
+
+.paper-tape{
+    position:absolute;
+    top:-12px;
+    left:50%;
+    transform:translateX(-50%) rotate(7deg);
+    width:68px;
+    height:20px;
+    background:#d9ceb8;
+    opacity:.92;
+    border-radius:2px;
+    border:1px solid rgba(255,255,255,.25);
+    box-shadow:0 2px 3px rgba(0,0,0,.08);
+    z-index:10;
+}
+
+.logout-button{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    padding:13px 16px;
+    background:transparent;
+    border:none;
+    border-radius:14px;
+    font-family:"Patrick Hand",cursive;
+    font-size:1.15rem;
+    color:var(--text-light);
+    cursor:pointer;
+    transition:all .2s ease;
+}
+
+.logout-button svg{
+    width:22px;
+    height:22px;
+}
+
+.logout-button:hover{
+    background:#fff8ef;
+    color:var(--text);
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+@media(max-width:1000px){
+    .sidebar{
+        width:220px;
+    }
+}
+
+@media(max-width:768px){
+    .sidebar{
+        position:fixed;
+        left:0;
+        top:0;
+        bottom:0;
+        z-index:1000;
+    }
+
+    .main-content{
+        margin-left:220px;
+    }
+}

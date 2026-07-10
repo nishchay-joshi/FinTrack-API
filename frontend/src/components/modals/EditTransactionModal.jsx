@@ -1,4 +1,4 @@
-import "../styles/EditTransactionModal.css";
+import "../../styles/EditTransactionModal.css";
 
 function EditTransactionModal({
     isOpen,
