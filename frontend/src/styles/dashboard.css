@@ -1,0 +1,384 @@
+.dashboard{
+    width:100%;
+    height:100%;
+    padding:0 36px 24px;
+    box-sizing:border-box;
+}
+
+.hero-section{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:30px;
+}
+
+.hero-content h1{
+    font-family:"Patrick Hand",cursive;
+    font-size:2.6rem;
+    font-weight:700;
+    color:#222;
+    margin:0;
+}
+
+.hero-content p{
+    margin-top:8px;
+    font-family:"Patrick Hand",cursive;
+    font-size:1.25rem;
+    color:#444;
+}
+
+.new-transaction-button{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 22px;
+    border:none;
+    border-radius:14px;
+    background:#1f1f1f;
+    color:#fff;
+    font-size:0.95rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:.2s;
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+}
+
+.new-transaction-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 22px rgba(0,0,0,.24);
+}
+
+.summary-section{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:34px;
+    margin-bottom:30px;
+}
+
+.summary-card{
+    position:relative;
+    min-height:150px;
+    border-radius:6px;
+    padding:18px 16px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.12);
+    transition:.2s;
+}
+
+.summary-card:hover{
+    transform:translateY(-4px);
+}
+
+.summary-tape{
+    position:absolute;
+    top:-10px;
+    left:50%;
+    transform:translateX(-50%) rotate(-3deg);
+    width:70px;
+    height:18px;
+    background:#d8c7a3;
+    opacity:.92;
+    border-radius:2px;
+}
+
+.summary-content{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    height:100%;
+}
+
+.summary-content h3{
+    margin:0;
+    font-family:"Patrick Hand",cursive;
+    font-size:1.35rem;
+    color:#222;
+    font-weight:500;
+}
+
+.summary-content h2{
+    margin:14px 0 10px;
+    font-size:2.1rem;
+    font-weight:700;
+    color:#111;
+}
+
+.summary-content p{
+    margin:0;
+    font-family:"Patrick Hand",cursive;
+    font-size:1.15rem;
+    color:#444;
+}
+
+.balance-card{
+    background:#edf5ff;
+    transform:rotate(-1.5deg);
+}
+
+.income-card{
+    background:#e7f8e8;
+    transform:rotate(0.5deg);
+}
+
+.expense-card{
+    background:#ffe2df;
+    transform:rotate(-1.1deg);
+}
+
+.transactions-card{
+    background:#fff0a8;
+    transform:rotate(1.7deg);
+}
+
+.balance-card:hover{
+    transform:rotate(-1.5deg) translateY(-4px);
+}
+
+.income-card:hover{
+    transform:rotate(.5deg) translateY(-4px);
+}
+
+.expense-card:hover{
+    transform:rotate(-1.1deg) translateY(-4px);
+}
+
+.transactions-card:hover{
+    transform:rotate(1.7deg) translateY(-4px);
+}
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:1fr 1.25fr;
+    gap:22px;
+}
+
+.paper-panel{
+    background:#fffdf8;
+    border-radius:24px;
+    padding:18px;
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
+}
+
+.panel-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 12px 12px;
+    border-bottom:1px solid rgba(0,0,0,.05);
+}
+
+.panel-header h2{
+    margin:0;
+    font-family:"Patrick Hand",cursive;
+    font-size:2rem;
+    font-weight:500;
+    color:#1f1f1f;
+}
+
+.panel-link{
+    background:none;
+    border:none;
+    padding:0;
+    cursor:pointer;
+    font-family:"Patrick Hand",cursive;
+    font-size:1.35rem;
+    color:#666;
+    text-decoration:underline;
+}
+
+.wallet-list,
+.transaction-list{
+    display:flex;
+    flex-direction:column;
+}
+
+.wallet-row,
+.transaction-row{
+    display:grid;
+    align-items:center;
+    height:52px;
+    padding:0 28px;
+    border-bottom:1px solid rgba(0,0,0,.05);
+    transition:.2s;
+}
+
+.wallet-row:last-child,
+.transaction-row:last-child{
+    border-bottom:none;
+}
+
+.wallet-row:hover,
+.transaction-row:hover{
+    background:rgba(255,255,255,.55);
+}
+
+.wallet-row{
+    grid-template-columns:1fr auto;
+}
+
+.wallet-info{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.wallet-icon{
+    width:40px;
+    height:40px;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    flex-shrink:0;
+}
+
+.wallet-icon svg{
+    width:20px;
+    height:20px;
+}
+
+.wallet-icon.emerald{
+    background:#0f766e;
+}
+
+.wallet-icon.green{
+    background:#22c55e;
+}
+
+.wallet-icon.orange{
+    background:#f59e0b;
+}
+
+.wallet-icon.red{
+    background:#ef4444;
+}
+
+.wallet-icon.purple{
+    background:#8b5cf6;
+}
+
+.wallet-title-wrapper{
+    position:relative;
+    display:inline-block;
+}
+
+.wallet-underline{
+    position:absolute;
+    width:100px;
+    left:8px;
+    bottom:-10px;
+    opacity:.7;
+}
+
+.wallet-name{
+    font-size:1.2rem;
+    color:#222;
+}
+
+.wallet-balance{
+    font-size:1.15rem;
+    font-weight:600;
+    color:#222;
+}
+
+.transaction-row{
+    display:grid;
+    grid-template-columns:80px 220px 140px 100px;
+    align-items:center;
+    column-gap:18px;
+}
+
+.transaction-date{
+    color:#666;
+    font-size:1rem;
+}
+
+.transaction-title{
+    color:#222;
+    font-size:1.08rem;
+}
+
+.transaction-wallet{
+    color:#666;
+    font-size:1rem;
+}
+
+.transaction-amount{
+    font-weight:700;
+    justify-self:end;
+}
+
+.transaction-amount.income{
+    color:#17a34a;
+}
+
+.transaction-amount.expense{
+    color:#e53935;
+}
+
+.transaction-amount.transfer{
+    color:#3b82f6;
+}
+
+.wallet-preview,
+.recent-transactions{
+    position:relative;
+}
+
+.hero-actions{
+    position:relative;
+}
+
+.hero-arrow{
+    position:absolute;
+    width:60px;
+    top:-42px;
+    left:-70px;
+    opacity:.9;
+}
+
+.hero-title{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+}
+
+.hero-crown{
+    width:42px;
+    transform:rotate(12deg);
+    margin-top:-6px;
+}
+
+.summary-card{
+    overflow:hidden;
+}
+
+.summary-sparkles{
+    position:absolute;
+    width:42px;
+    right:14px;
+    bottom:12px;
+    opacity:.75;
+}
+
+.wallet-title-wrapper,
+.transaction-title-wrapper{
+    position:relative;
+    display:inline-block;
+}
+
+.wallet-underline{
+    position:absolute;
+    width:100px;
+    left:8px;
+    bottom:-10px;
+    opacity:.7;
+}
+
+.transaction-spiral{
+    position:absolute;
+    width:34px;
+    right:-42px;
+    top:0;
+    opacity:.75;
+}

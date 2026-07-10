@@ -1,76 +1,61 @@
-import {Wallet, ArrowDownCircle, ArrowUpCircle, Receipt} from "lucide-react";
+import "../../styles/dashboard.css";
+import sparkles from "../../assets/doodles/sparkles.svg";
 
-function SummaryCards({ wallets, transactions }) {
+function SummaryCards() {
 
-    const totalBalance = wallets.reduce(
-        (sum, wallet) => sum + Number(wallet.balance), 0);
-
-    const totalIncome = transactions
-        .filter((transaction) =>
-                transaction.transaction_type === "income")
-        .reduce((sum, transaction) =>
-                sum + Number(transaction.amount), 0);
-
-    const totalExpense = transactions
-        .filter((transaction) =>
-                transaction.transaction_type === "expense")
-        .reduce((sum, transaction) =>
-                sum + Number(transaction.amount), 0);
-
-    const summaryData = [
+    const cards = [
         {
             title: "Total Balance",
-            value: `₹${totalBalance.toLocaleString()}`,
-            subtitle: `Across ${wallets.length} wallet${wallets.length !== 1 ? "s" : ""}`,
-            icon: <Wallet size={22} />,
-            iconClass: "balance-icon"
+            value: "₹52,340",
+            subtitle: "Across 5 wallets",
+            className: "balance-card"
         },
         {
-            title: "Total Income",
-            value: `₹${totalIncome.toLocaleString()}`,
-            subtitle: "All income recorded",
-            icon: <ArrowDownCircle size={22} />,
-            iconClass: "income-icon"
+            title: "Income",
+            value: "₹1,20,000",
+            subtitle: "This Month",
+            className: "income-card"
         },
         {
-            title: "Total Expenses",
-            value: `₹${totalExpense.toLocaleString()}`,
-            subtitle: "All expenses recorded",
-            icon: <ArrowUpCircle size={22} />,
-            iconClass: "expense-icon"
+            title: "Expenses",
+            value: "₹67,660",
+            subtitle: "This Month",
+            className: "expense-card"
         },
         {
-            title: "Total Transactions",
-            value: transactions.length.toLocaleString(),
-            subtitle: "Transactions created",
-            icon: <Receipt size={22} />,
-            iconClass: "transaction-icon"
+            title: "Transactions",
+            value: "14",
+            subtitle: "This Month",
+            className: "transactions-card"
         }
     ];
 
     return (
         <section className="summary-section">
-            {summaryData.map((card) => (
+            {cards.map((card) => (
                 <div
                     key={card.title}
-                    className="summary-card"
+                    className={`summary-card ${card.className}`}
                 >
-                   <div className="summary-header">
-                    <div className={`summary-icon ${card.iconClass}`}>
-                        {card.icon}
-                    </div>
+                    <div className="summary-tape"></div>
                     <div className="summary-content">
-                        <p className="summary-title">
+                        {card.title === "Transactions" && (
+                            <img
+                                src={sparkles}
+                                alt=""
+                                className="summary-sparkles"
+                            />
+                        )}
+                        <h3>
                             {card.title}
-                        </p>
-                        <h2 className="summary-value">
+                        </h3>
+                        <h2>
                             {card.value}
                         </h2>
-                        <p className="summary-subtitle">
+                        <p>
                             {card.subtitle}
                         </p>
                     </div>
-                </div>
                 </div>
             ))}
         </section>

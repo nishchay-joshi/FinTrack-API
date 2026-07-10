@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {
     LayoutDashboard,
     Wallet,
@@ -13,6 +13,14 @@ import curve from "../../assets/doodles/curve.svg";
 import stars from "../../assets/doodles/stars.svg";
 
 function Sidebar() {
+
+    const navigate = useNavigate();
+
+    function handleLogout(){
+        localStorage.removeItem("access_token");
+        navigate("/login");
+
+    }
 
     const navigation = [
         {
@@ -102,7 +110,10 @@ function Sidebar() {
                         </p>
                     </div>
                 </div>
-                <button className="logout-button">
+                <button
+                    className="logout-button"
+                    onClick={handleLogout}
+                >
                     <LogOut size={22} />
                     <span>
                         Logout
