@@ -17,7 +17,7 @@ function WalletRow({ wallet, index }) {
                 </div>
                 <div>
                     <h3>{wallet.name}</h3>
-                    <span>{wallet.wallet_type}</span>
+                    <span>{wallet.description}</span>
                 </div>
             </div>
             <div className="wallet-right">
