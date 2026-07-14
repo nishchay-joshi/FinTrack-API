@@ -5,7 +5,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 class WalletCreate(BaseModel):
     name: str = Field(min_length=1, max_length=50)
-    wallet_type: str = Field(min_length=1, max_length=50)
+    description: str = Field(min_length=1, max_length=50)
 
 
 class WalletResponse(WalletCreate):

@@ -31,7 +31,7 @@ async def create_wallet(
     new_wallet = Wallet(
         user_id=current_user.id,
         name=wallet_data.name,
-        wallet_type=wallet_data.wallet_type,
+        description=wallet_data.description,
         balance=0,
     )
 

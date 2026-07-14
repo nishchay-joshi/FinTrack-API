@@ -17,7 +17,7 @@ class Wallet(Base):
     )
     name: Mapped[str] = mapped_column(String(50), nullable=False)
     balance: Mapped[float] = mapped_column(Float, nullable=False, default=0)
-    wallet_type: Mapped[str] = mapped_column(String(12), nullable=False)
+    description: Mapped[str] = mapped_column(String(100), nullable=True)
     user: Mapped["User"] = relationship(back_populates="wallets")
     transactions: Mapped[list["Transaction"]] = relationship(back_populates="wallet")
 
