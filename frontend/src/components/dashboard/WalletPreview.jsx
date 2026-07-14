@@ -1,31 +1,8 @@
-import {
-    Wallet,
-    PiggyBank,
-    Briefcase,
-    Shield,
-    TrendingUp
-} from "lucide-react";
-
 import { Link } from "react-router-dom";
 import "../../styles/dashboard.css";
+import { getWalletIcon, getWalletColor } from "../../utils/walletIcons";
 
 function WalletPreview({ wallets }) {
-
-    const icons = [
-        Wallet,
-        PiggyBank,
-        Briefcase,
-        Shield,
-        TrendingUp
-    ];
-
-    const colors = [
-        "emerald",
-        "green",
-        "orange",
-        "red",
-        "purple"
-    ];
 
     return (
         <section className="paper-panel wallet-preview">
@@ -42,8 +19,8 @@ function WalletPreview({ wallets }) {
             </div>
             <div className="wallet-list">
                 {wallets.slice(0, 5).map((wallet, index) => {
-                    const Icon = icons[index % icons.length];
-                    const color = colors[index % colors.length];
+                    const Icon = getWalletIcon(index);
+                    const color = getWalletColor(index);
                     return (
                         <div
                             key={wallet.id}

@@ -3,6 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import Layout from "./components/layout/Layout.jsx";
 import ProtectedRoute from "./components/layout/ProtectedRoute.jsx";
 import Register from "./pages/Register.jsx";
+import Wallets from "./pages/Wallets.jsx";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
@@ -38,6 +39,24 @@ function App() {
                         path="/"
                         element={<Dashboard />}
                     />
+                    <Route
+                        path="/wallets"
+                        element={<Wallets />}
+                    />
+                    {/*<Route*/}
+                    {/*    path="/transactions"*/}
+                    {/*    element={<Transactions />}*/}
+                    {/*/>*/}
+
+                    {/*<Route*/}
+                    {/*    path="/analytics"*/}
+                    {/*    element={<Analytics />}*/}
+                    {/*/>*/}
+
+                    {/*<Route*/}
+                    {/*    path="/categories"*/}
+                    {/*    element={<Categories />}*/}
+                    {/*/>*/}
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -1,0 +1,125 @@
+.wallets-page{
+    width:100%;
+    min-height:100vh;
+    padding:0 36px 24px;
+    box-sizing:border-box;
+}
+
+.wallets-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:28px;
+}
+
+.wallets-header h1{
+    margin:0;
+    font-family:"Patrick Hand",cursive;
+    font-size:2.6rem;
+    color:#222;
+}
+
+.wallets-header p{
+    margin-top:6px;
+    font-family:"Patrick Hand",cursive;
+    font-size:1.2rem;
+    color:#555;
+}
+
+.add-wallet-button{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 22px;
+    border:none;
+    border-radius:14px;
+    background:#1f1f1f;
+    color:#fff;
+    font-size:.95rem;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+    transition:.2s;
+}
+
+.add-wallet-button:hover{
+    transform:translateY(-2px);
+}
+
+.wallet-list{
+    background:#fffdf8;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
+    margin-top:18px;
+}
+
+.wallet-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:30px 35px;
+    border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+.wallet-row:last-child{
+    border-bottom:none;
+}
+
+.wallet-left{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.wallet-icon{
+    width:50px;
+    height:50px;
+    border-radius:12px;
+    background:#1d7f77;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.wallet-left h3{
+    margin:0;
+    font-family:"Patrick Hand",cursive;
+    font-size:1.5rem;
+}
+
+.wallet-left span{
+    color:#666;
+    font-size:.95rem;
+}
+
+.wallet-right{
+    display:flex;
+    align-items:center;
+    gap:24px;
+}
+
+.wallet-right strong{
+    font-size:1.15rem;
+}
+
+.wallet-menu{
+    border:none;
+    background:none;
+    cursor:pointer;
+}
+
+.wallet-empty{
+    background:#fffdf8;
+    padding:80px;
+    border-radius:24px;
+    text-align:center;
+}
+
+.wallet-balance{
+    font-size:1.35rem;
+    font-weight:700;
+    color:#1d1d1d;
+    min-width:120px;
+    text-align:right;
+}

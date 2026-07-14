@@ -23,7 +23,6 @@ function Hero() {
 
     function getGreeting() {
         const hour = new Date().getHours();
-        console.log(hour);
 
         if (5 <= hour <= 12) return "Good Morning";
         if (hour < 17) return "Good Afternoon";
