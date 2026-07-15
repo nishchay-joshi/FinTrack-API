@@ -1,14 +1,15 @@
 from datetime import datetime
-from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
+
+from app.models.enums import TransactionType
 
 
 class TransactionCreate(BaseModel):
     wallet_id: int
     category_id: int
     amount: float = Field(gt=0)
-    transaction_type: Literal["income", "expense"]
+    transaction_type: TransactionType
     note: str | None = None
 
 
@@ -23,5 +24,5 @@ class TransactionUpdate(BaseModel):
     wallet_id: int | None = None
     category_id: int | None = None
     amount: float | None = None
-    transaction_type: Literal["income", "expense"] | None = None
+    transaction_type: TransactionType | None = None
     note: str | None = None

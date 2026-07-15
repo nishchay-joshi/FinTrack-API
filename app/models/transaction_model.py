@@ -1,10 +1,11 @@
 from __future__ import annotations
 from datetime import UTC, datetime
 
-from sqlalchemy import DateTime, Integer, String, Float, ForeignKey
+from sqlalchemy import DateTime, Integer, String, Float, ForeignKey, Enum
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database.base import Base
+from app.models.enums import TransactionType
 
 class Transaction(Base):
     __tablename__ = "transactions"
@@ -26,7 +27,17 @@ class Transaction(Base):
         index=True,
     )
     amount: Mapped[float] = mapped_column(Float, nullable=False)
-    transaction_type: Mapped[str] = mapped_column(String(50), nullable=False)
+
+    transaction_type: Mapped[TransactionType] = mapped_column(
+        Enum(TransactionType,
+            values_callable=lambda enum: [e.value for e in enum],
+            name="transaction_type_enum"),
+        nullable=False,
+    )
+    transfer_group_id: Mapped[str | None] = mapped_column(
+        String(36),
+        nullable=True,
+    )
     note: Mapped[str | None] = mapped_column(String(50), nullable=True, default=None)
 
     user: Mapped["User"] = relationship(back_populates="transactions")
