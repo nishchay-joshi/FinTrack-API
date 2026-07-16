@@ -3,8 +3,8 @@ from fastapi import APIRouter, status, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database.session import get_db
-from app.schemas.transaction_schema import TransactionCreate, TransactionUpdate, TransactionResponse
-from app.services.transaction_service import create_transaction, get_transactions, update_transaction
+from app.schemas.transaction_schema import TransactionCreate, TransactionUpdate, TransactionResponse, TransferCreate
+from app.services.transaction_service import create_transaction, get_transactions, update_transaction, create_transfer
 from app.core.auth import CurrentUser
 
 router = APIRouter()
@@ -31,3 +31,18 @@ async def update_transaction_endpoint(transaction_id: int,
                                       db: Annotated[AsyncSession, Depends(get_db)]):
     updated_transaction = await update_transaction(transaction_id, transaction_data, current_user, db)
     return updated_transaction
+
+
+@router.post("/transfer", status_code=status.HTTP_201_CREATED)
+async def transfer(
+    transfer_data: TransferCreate,
+    current_user: CurrentUser,
+    db: AsyncSession = Depends(get_db),
+):
+    transfer_created = await create_transfer(
+        transfer_data=transfer_data,
+        current_user=current_user,
+        db=db,
+    )
+
+    return transfer_created
