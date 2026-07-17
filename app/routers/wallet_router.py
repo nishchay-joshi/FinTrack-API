@@ -3,8 +3,8 @@ from fastapi import APIRouter, status, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database.session import get_db
-from app.schemas.wallet_schema import WalletCreate, WalletResponse
-from app.services.wallet_service import create_wallet, get_all_wallets, get_wallet, delete_wallet
+from app.schemas.wallet_schema import WalletCreate, WalletResponse, WalletUpdate
+from app.services.wallet_service import create_wallet, get_all_wallets, get_wallet, delete_wallet, update_wallet
 from app.core.auth import CurrentUser
 
 router = APIRouter()
@@ -38,3 +38,24 @@ async def get_specific_wallet(wallet_id: int, user: CurrentUser, db: Annotated[A
                status_code=status.HTTP_204_NO_CONTENT)
 async def delete_wallet_endpoint(wallet_id: int, user: CurrentUser, db: Annotated[AsyncSession, Depends(get_db)]):
     await delete_wallet(wallet_id, user, db)
+
+
+@router.patch(
+    "/{wallet_id}",
+    response_model=WalletResponse,
+    status_code=status.HTTP_200_OK,
+)
+async def update_wallet_endpoint(
+    wallet_id: int,
+    wallet_data: WalletUpdate,
+    current_user: CurrentUser,
+    db: Annotated[AsyncSession, Depends(get_db)],
+):
+    wallet = await update_wallet(
+        wallet_id=wallet_id,
+        wallet_data=wallet_data,
+        current_user=current_user,
+        db=db,
+    )
+
+    return wallet

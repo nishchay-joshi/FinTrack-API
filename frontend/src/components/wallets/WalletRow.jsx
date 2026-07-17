@@ -1,7 +1,12 @@
-import { MoreVertical } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 import { getWalletIcon, getWalletColor } from "../../utils/walletIcons";
 
-function WalletRow({ wallet, index }) {
+function WalletRow({
+    wallet,
+    index,
+    onEdit,
+    onDelete,
+}) {
 
     const Icon = getWalletIcon(index);
     const color = getWalletColor(index);
@@ -24,9 +29,22 @@ function WalletRow({ wallet, index }) {
                 <p className="wallet-balance">
                     ₹{Number(wallet.balance).toLocaleString("en-IN")}
                 </p>
-                <button className="wallet-menu">
-                    <MoreVertical size={18}/>
-                </button>
+                <div className="wallet-actions">
+                    <button
+                        className="wallet-action edit"
+                        onClick={() => onEdit(wallet)}
+                        title="Edit Wallet"
+                    >
+                        <Pencil size={18} />
+                    </button>
+                    <button
+                        className="wallet-action delete"
+                        onClick={() => onDelete(wallet)}
+                        title="Delete Wallet"
+                    >
+                        <Trash2 size={18} />
+                    </button>
+                </div>
             </div>
         </div>
     );

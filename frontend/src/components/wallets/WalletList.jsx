@@ -1,6 +1,10 @@
 import WalletRow from "./WalletRow";
 
-function WalletList({wallets}){
+function WalletList({
+    wallets,
+    onEdit,
+    onDelete,
+}){
 
     if(wallets.length===0){
         return(
@@ -18,6 +22,8 @@ function WalletList({wallets}){
                     key={wallet.id}
                     wallet={wallet}
                     index={index}
+                    onEdit={onEdit}
+                    onDelete={onDelete}
                 />
             ))}
         </div>

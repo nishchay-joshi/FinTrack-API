@@ -14,3 +14,8 @@ class WalletResponse(WalletCreate):
     id: int
     balance: float
     created_at: datetime
+
+
+class WalletUpdate(BaseModel):
+    name: str | None = None
+    description: str | None = None

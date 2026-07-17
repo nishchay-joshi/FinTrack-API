@@ -4,7 +4,7 @@ from sqlalchemy import select, func
 
 from app.models.wallet_model import Wallet
 from app.models.user_model import User
-from app.schemas.wallet_schema import WalletCreate
+from app.schemas.wallet_schema import WalletCreate, WalletUpdate
 
 
 async def create_wallet(
@@ -79,6 +79,44 @@ async def delete_wallet(wallet_id: int, current_user: User, db: AsyncSession):
 
     await db.delete(wallet)
     await db.commit()
+
+
+async def update_wallet(
+    wallet_id: int,
+    wallet_data: WalletUpdate,
+    current_user: User,
+    db: AsyncSession,
+):
+    result = await db.execute(
+        select(Wallet).where(
+            Wallet.id == wallet_id,
+            Wallet.user_id == current_user.id,
+        )
+    )
+
+    wallet = result.scalars().first()
+
+    if not wallet:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Wallet not found",
+        )
+
+    updated_fields = wallet_data.model_dump(exclude_unset=True)
+
+    if not updated_fields:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="No data sent.",
+        )
+
+    for field, value in updated_fields.items():
+        setattr(wallet, field, value)
+
+    await db.commit()
+    await db.refresh(wallet)
+
+    return wallet
 
 
 
