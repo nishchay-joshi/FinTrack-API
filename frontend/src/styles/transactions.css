@@ -1,0 +1,124 @@
+.transactions-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.transactions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.transactions-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.transactions-header p {
+    margin-top: 0.4rem;
+    color: #6b7280;
+}
+
+.transactions-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.new-transaction-button,
+.transfer-button {
+    border: none;
+    border-radius: 12px;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.new-transaction-button {
+    background: #111827;
+    color: white;
+}
+
+.new-transaction-button:hover {
+    background: #1f2937;
+}
+
+.transfer-button {
+    background: white;
+    border: 1px solid #d1d5db;
+    color: #111827;
+}
+
+.transfer-button:hover {
+    background: #f9fafb;
+}
+
+.transaction-table {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.transaction-header,
+.transaction-row {
+    display: grid;
+    grid-template-columns:
+        1.4fr
+        1.4fr
+        1fr
+        1fr
+        1.2fr
+        80px;
+    align-items: center;
+    padding: 1rem 1.5rem;
+}
+
+.transaction-header {
+    background: #f8f8f8;
+    font-weight: 600;
+    color: #4b5563;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.transaction-row:not(:last-child) {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.transaction-row:hover {
+    background: #fafafa;
+}
+
+.edit-transaction-btn {
+    border: none;
+    background: transparent;
+    color: #2563eb;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.edit-transaction-btn:hover {
+    text-decoration: underline;
+}
+
+.empty-state {
+    background: white;
+    border-radius: 18px;
+    padding: 5rem 2rem;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.empty-state h2 {
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+}
+
+.empty-state p {
+    color: #6b7280;
+}

@@ -6,6 +6,7 @@ import Register from "./pages/Register.jsx";
 import Wallets from "./pages/Wallets.jsx";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Transactions from "./pages/Transactions.jsx";
 
 function App() {
 
@@ -43,11 +44,10 @@ function App() {
                         path="/wallets"
                         element={<Wallets />}
                     />
-                    {/*<Route*/}
-                    {/*    path="/transactions"*/}
-                    {/*    element={<Transactions />}*/}
-                    {/*/>*/}
-
+                    <Route
+                        path="/transactions"
+                        element={<Transactions />}
+                    />
                     {/*<Route*/}
                     {/*    path="/analytics"*/}
                     {/*    element={<Analytics />}*/}
