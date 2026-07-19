@@ -28,7 +28,12 @@ async def _get_wallet(wallet_id: int, current_user: User, db: AsyncSession):
     return wallet
 
 
-async def create_transaction(transaction_data: TransactionCreate, current_user: User, db: AsyncSession):
+async def create_transaction(
+    transaction_data: TransactionCreate,
+    current_user: User,
+    db: AsyncSession,
+):
+
     wallet = await _get_wallet(
         transaction_data.wallet_id,
         current_user,
@@ -36,25 +41,34 @@ async def create_transaction(transaction_data: TransactionCreate, current_user: 
     )
 
     result = await db.execute(
-        select(Category).where(Category.id == transaction_data.category_id,
-                               Category.user_id == current_user.id)
+        select(Category).where(
+            Category.id == transaction_data.category_id,
+            Category.user_id == current_user.id,
+        )
     )
 
     category = result.scalars().first()
 
     if not category:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Category not found")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Category not found",
+        )
 
     if transaction_data.transaction_type == TransactionType.INCOME:
         wallet.balance += transaction_data.amount
     elif transaction_data.transaction_type == TransactionType.EXPENSE:
+        if wallet.balance < transaction_data.amount:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Insufficient wallet balance.",
+            )
         wallet.balance -= transaction_data.amount
     else:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Transfers must be created using the transfer endpoint.",
         )
-
     new_transaction = Transaction(
         user_id=current_user.id,
         wallet_id=transaction_data.wallet_id,
@@ -130,12 +144,11 @@ async def update_transaction(
         transaction.transaction_type,
     )
 
-    final_note = updated_fields.get(
-        "note",
-        transaction.note,
+    final_wallet = await _get_wallet(
+        final_wallet_id,
+        current_user,
+        db,
     )
-
-    final_wallet = await _get_wallet(final_wallet_id, current_user, db)
 
     result = await db.execute(
         select(Category).where(
@@ -152,7 +165,11 @@ async def update_transaction(
             detail="Category not found",
         )
 
-    old_wallet = await _get_wallet(transaction.wallet_id, current_user, db)
+    old_wallet = await _get_wallet(
+        transaction.wallet_id,
+        current_user,
+        db,
+    )
 
     if transaction.transaction_type == TransactionType.INCOME:
         old_wallet.balance -= transaction.amount
@@ -163,6 +180,13 @@ async def update_transaction(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Transfer transactions cannot be edited using this endpoint.",
         )
+
+    if final_transaction_type == TransactionType.EXPENSE:
+        if final_wallet.balance < final_amount:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Insufficient wallet balance.",
+            )
 
     if final_transaction_type == TransactionType.INCOME:
         final_wallet.balance += final_amount
