@@ -155,20 +155,43 @@ async def update_transaction(
         db,
     )
 
-    result = await db.execute(
-        select(Category).where(
-            Category.id == final_category_id,
-            Category.user_id == current_user.id,
+    if final_transaction_type == TransactionType.EXPENSE:
+        if final_category_id is None:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Expense transactions require a category.",
+            )
+        result = await db.execute(
+            select(Category).where(
+                Category.id == final_category_id,
+                Category.user_id == current_user.id,
+            )
         )
-    )
 
-    final_category = result.scalars().first()
+        final_category = result.scalars().first()
 
-    if not final_category:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Category not found",
-        )
+        if not final_category:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Category not found",
+            )
+
+    elif final_transaction_type == TransactionType.INCOME:
+        if final_category_id is not None:
+            result = await db.execute(
+                select(Category).where(
+                    Category.id == final_category_id,
+                    Category.user_id == current_user.id,
+                )
+            )
+
+            final_category = result.scalars().first()
+
+            if not final_category:
+                raise HTTPException(
+                    status_code=status.HTTP_404_NOT_FOUND,
+                    detail="Category not found",
+                )
 
     old_wallet = await _get_wallet(
         transaction.wallet_id,
@@ -268,9 +291,7 @@ async def create_transfer(
 
     db.add(source_transaction)
     db.add(destination_transaction)
-
     await db.commit()
-
     await db.refresh(source_transaction)
     await db.refresh(destination_transaction)
 

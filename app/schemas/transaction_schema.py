@@ -23,7 +23,7 @@ class TransactionResponse(TransactionCreate):
 class TransactionUpdate(BaseModel):
     wallet_id: int | None = None
     category_id: int | None = None
-    amount: float | None = None
+    amount: float | None = Field(default=None, gt=0)
     transaction_type: TransactionType | None = None
     note: str | None = None
 
