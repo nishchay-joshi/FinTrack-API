@@ -22,6 +22,7 @@ function TransactionModal({
 
         if (!isOpen) return;
         if (transaction) {
+            console.log(transaction);
             setWalletId(transaction.wallet_id);
             setCategoryId(transaction.category_id ?? "");
             setAmount(transaction.amount);

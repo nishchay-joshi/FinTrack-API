@@ -50,7 +50,7 @@ function TransactionTable({ transactions, walletLookup, categoryLookup, onEdit }
                     </span>
                     <button
                         className="edit-transaction-btn"
-                        onClick={onEdit}
+                        onClick={() => onEdit(transaction)}
                     >
                     <Pencil size={20} />
                     </button>
