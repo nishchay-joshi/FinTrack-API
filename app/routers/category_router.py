@@ -3,8 +3,8 @@ from fastapi import APIRouter, status, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database.session import get_db
-from app.schemas.category_schema import CategoryCreate, CategoryResponse
-from app.services.category_service import create_category, get_all_categories, delete_category
+from app.schemas.category_schema import CategoryCreate, CategoryResponse, CategoryUpdate
+from app.services.category_service import create_category, get_all_categories, delete_category, update_category
 from app.core.auth import CurrentUser
 
 router = APIRouter()
@@ -30,3 +30,23 @@ async def get_categories(user: CurrentUser, db: Annotated[AsyncSession, Depends(
                status_code=status.HTTP_204_NO_CONTENT)
 async def delete_category_endpoint(category_id: int, user: CurrentUser, db: Annotated[AsyncSession, Depends(get_db)]):
     await delete_category(category_id, user, db)
+
+
+@router.patch("/{category_id}",
+    response_model=CategoryResponse,
+    status_code=status.HTTP_200_OK,
+)
+async def update_category_endpoint(
+    category_id: int,
+    category_data: CategoryUpdate,
+    current_user: CurrentUser,
+    db: Annotated[AsyncSession, Depends(get_db)],
+):
+    updated_category = await update_category(
+        category_id=category_id,
+        category_data=category_data,
+        current_user=current_user,
+        db=db,
+    )
+
+    return updated_category

@@ -12,3 +12,7 @@ class CategoryResponse(CategoryCreate):
 
     id: int
     created_at: datetime
+
+
+class CategoryUpdate(BaseModel):
+    name: str | None = None
