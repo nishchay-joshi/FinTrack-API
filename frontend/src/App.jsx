@@ -7,6 +7,7 @@ import Wallets from "./pages/Wallets.jsx";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Transactions from "./pages/Transactions.jsx";
+import Categories from "./pages/Categories.jsx";
 
 function App() {
 
@@ -52,11 +53,10 @@ function App() {
                     {/*    path="/analytics"*/}
                     {/*    element={<Analytics />}*/}
                     {/*/>*/}
-
-                    {/*<Route*/}
-                    {/*    path="/categories"*/}
-                    {/*    element={<Categories />}*/}
-                    {/*/>*/}
+                    <Route
+                        path="/categories"
+                        element={<Categories />}
+                    />
                 </Route>
             </Routes>
         </BrowserRouter>
