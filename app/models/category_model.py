@@ -5,6 +5,7 @@ from sqlalchemy import DateTime, Integer, String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database.base import Base
+from app.models.enums import CategoryIcon, CategoryColor
 
 class Category(Base):
     __tablename__ = "categories"
@@ -16,6 +17,8 @@ class Category(Base):
         index=True,
     )
     name: Mapped[str] = mapped_column(String(50), nullable=False)
+    icon: Mapped[str] = mapped_column(String(50), nullable=False, default=CategoryIcon.TAG)
+    color: Mapped[str] = mapped_column(String(20), nullable=False, default=CategoryColor.GRAY)
 
     user: Mapped["User"] = relationship(back_populates="categories")
     transactions: Mapped[list["Transaction"]] = relationship(back_populates="category")
