@@ -1,4 +1,6 @@
-function TransactionTable({ transactions, walletLookup, categoryLookup }) {
+import {Pencil} from "lucide-react";
+
+function TransactionTable({ transactions, walletLookup, categoryLookup, onEdit }) {
 
     if (transactions.length === 0) {
         return (
@@ -14,10 +16,10 @@ function TransactionTable({ transactions, walletLookup, categoryLookup }) {
             <div className="transaction-header">
                 <span>Wallet</span>
                 <span>Category</span>
+                <span>Note</span>
                 <span>Type</span>
                 <span>Amount</span>
                 <span>Date</span>
-                <span>Actions</span>
             </div>
             {transactions.map((transaction) => (
                 <div
@@ -33,6 +35,9 @@ function TransactionTable({ transactions, walletLookup, categoryLookup }) {
                         : "Transfer"}
                     </span>
                     <span>
+                        {transaction.note || "-"}
+                    </span>
+                    <span>
                         {transaction.transaction_type}
                     </span>
                     <span>
@@ -43,8 +48,11 @@ function TransactionTable({ transactions, walletLookup, categoryLookup }) {
                             transaction.timestamp
                         ).toLocaleDateString("en-IN")}
                     </span>
-                    <button className="edit-transaction-btn">
-                        Edit
+                    <button
+                        className="edit-transaction-btn"
+                        onClick={onEdit}
+                    >
+                    <Pencil size={20} />
                     </button>
                 </div>
             ))}

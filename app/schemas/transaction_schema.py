@@ -7,7 +7,7 @@ from app.models.enums import TransactionType
 
 class TransactionCreate(BaseModel):
     wallet_id: int
-    category_id: int | None
+    category_id: int | None = None
     amount: float = Field(gt=0)
     transaction_type: TransactionType
     note: str | None = None

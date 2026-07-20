@@ -26,13 +26,13 @@ function TransactionModal({
             setCategoryId(transaction.category_id ?? "");
             setAmount(transaction.amount);
             setTransactionType(transaction.transaction_type);
-            setNote(transaction.note ?? "");
+            setNote(transaction.note ?? "-");
         } else {
             setWalletId(wallets[0]?.id ?? "");
             setCategoryId(categories[0]?.id ?? "");
             setAmount("");
             setTransactionType("expense");
-            setNote("");
+            setNote("-");
         }
     }, [transaction, wallets, categories, isOpen]);
 

@@ -58,6 +58,11 @@ async def create_transaction(
     if transaction_data.transaction_type == TransactionType.INCOME:
         wallet.balance += transaction_data.amount
     elif transaction_data.transaction_type == TransactionType.EXPENSE:
+        if transaction_data.category_id is None:
+            raise HTTPException(
+                status_code=400,
+                detail="Expense transactions require a category.",
+            )
         if wallet.balance < transaction_data.amount:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
