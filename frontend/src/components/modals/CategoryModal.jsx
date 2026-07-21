@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
+import {
+    CATEGORY_ICONS,
+    CATEGORY_ICON_OPTIONS,
+    CATEGORY_COLORS,
+} from "../../utils/categoryOptions";
 import "../../styles/modal.css";
 
 function CategoryModal({
@@ -10,14 +15,22 @@ function CategoryModal({
 }) {
 
     const [name, setName] = useState("");
+    const [icon, setIcon] = useState("Tag");
+    const [color, setColor] = useState("gray");
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        console.log("Category received: ", category)
         if (!isOpen) return;
+
         if (category) {
             setName(category.name);
+            setIcon(category.icon);
+            setColor(category.color);
         } else {
             setName("");
+            setIcon("Tag");
+            setColor("gray");
         }
     }, [category, isOpen]);
 
@@ -26,19 +39,14 @@ function CategoryModal({
 
         setLoading(true);
 
-        const payload = {name};
+        const payload = {name, icon, color};
 
         try {
             if (category) {
-                await api.patch(`/api/category/${category.id}`,
-                    payload);
+                await api.patch(`/api/category/${category.id}`, payload);
             } else {
-                await api.post(
-                    "/api/category/",
-                    payload,
-                );
+                await api.post("/api/category/", payload);
             }
-
             await onSuccess();
             onClose();
         } catch (error) {
@@ -49,13 +57,14 @@ function CategoryModal({
     }
 
     if (!isOpen) return null;
+
     return (
         <div
             className="modal-overlay"
             onClick={onClose}
         >
             <div
-                className="modal"
+                className="modal category-modal"
                 onClick={(event) => event.stopPropagation()}
             >
                 <h2>
@@ -71,12 +80,56 @@ function CategoryModal({
                         <input
                             type="text"
                             value={name}
+                            placeholder="Food"
                             onChange={(event) =>
                                 setName(event.target.value)
                             }
-                            placeholder="e.g. Food"
                             required
                         />
+                    </div>
+                    <div className="form-group">
+                        <label>
+                            Choose Icon
+                        </label>
+                        <div className="icon-picker">
+                            {CATEGORY_ICON_OPTIONS.map((iconName) => {
+                                const Icon = CATEGORY_ICONS[iconName];
+                                return (
+                                    <button
+                                        key={iconName}
+                                        type="button"
+                                        className={
+                                            icon === iconName
+                                                ? "icon-option active"
+                                                : "icon-option"
+                                        }
+                                        onClick={() => setIcon(iconName)}
+                                    >
+                                        <Icon size={20} />
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label>
+                            Choose Color
+                        </label>
+                        <div className="color-picker">
+                            {CATEGORY_COLORS.map((item) => (
+                                <button
+                                    key={item}
+                                    type="button"
+                                    className={
+                                        color === item
+                                            ? "color-option active"
+                                            : "color-option"
+                                    }
+                                    style={{backgroundColor: item}}
+                                    onClick={() => setColor(item)}
+                                />
+                            ))}
+                        </div>
                     </div>
                     <div className="modal-actions">
                         <button

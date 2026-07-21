@@ -159,3 +159,73 @@
         width: 100%;
     }
 }
+
+.category-modal {
+    max-width: 560px;
+}
+
+.icon-picker {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.icon-option {
+    height: 54px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    color: #d7d7d7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.icon-option:hover {
+    border-color: #4f8cff;
+    background: rgba(79, 140, 255, 0.12);
+    transform: translateY(-2px);
+}
+
+.icon-option.active {
+    border-color: #4f8cff;
+    background: rgba(79, 140, 255, 0.2);
+    color: white;
+}
+
+.color-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.color-option {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.color-option:hover {
+    transform: scale(1.12);
+}
+
+.color-option.active {
+    border-color: white;
+    transform: scale(1.15);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+}
+
+.category-modal .form-group {
+    margin-bottom: 24px;
+}
+
+.category-modal input {
+    width: 100%;
+}

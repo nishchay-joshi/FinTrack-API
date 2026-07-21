@@ -1,4 +1,5 @@
-import { Pencil, Trash2, Tag } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
+import { getCategoryIcon } from "../../utils/categoryOptions";
 
 function CategoryCard({
     category,
@@ -6,12 +7,18 @@ function CategoryCard({
     onDelete,
 }) {
 
+    const Icon = getCategoryIcon(category.icon);
+
     return (
         <div className="category-card">
             <div className="category-card-top">
-                <div className="category-icon">
-                    <Tag
+                <div
+                    className="category-icon"
+                    style={{backgroundColor: category.color}}
+                >
+                    <Icon
                         size={24}
+                        color="white"
                         strokeWidth={2.2}
                     />
                 </div>
@@ -31,12 +38,8 @@ function CategoryCard({
                 </div>
             </div>
             <div className="category-content">
-                <h3>
-                    {category.name}
-                </h3>
-                <p>
-                    Organize your transactions
-                </p>
+                <h3>{category.name}</h3>
+                <p>Organize your transactions</p>
             </div>
         </div>
     );
