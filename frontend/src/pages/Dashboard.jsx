@@ -8,27 +8,22 @@ import "../styles/dashboard.css";
 
 function Dashboard() {
 
-    const [wallets, setWallets] = useState([]);
-    const [transactions, setTransactions] = useState([]);
+    const [dashboard, setDashboard] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchDashboardData = async () => {
+        async function fetchDashboard() {
             try {
-                const [walletResponse, transactionResponse] = await Promise.all([
-                    api.get("/api/wallet"),
-                    api.get("/api/transaction")
-                ]);
-                setWallets(walletResponse.data);
-                setTransactions(transactionResponse.data);
+                const response = await api.get("/api/dashboard/");
+                setDashboard(response.data);
             } catch (error) {
                 console.error(error);
             } finally {
                 setLoading(false);
             }
-        };
+        }
 
-        fetchDashboardData();
+        fetchDashboard();
     }, []);
 
     if (loading) {
@@ -43,16 +38,15 @@ function Dashboard() {
         <main className="dashboard">
             <Hero />
             <SummaryCards
-                wallets={wallets}
-                transactions={transactions}
+                summary={dashboard.summary}
             />
             <div className="dashboard-grid">
                 <WalletPreview
-                    wallets={wallets}
+                    wallets={dashboard.wallets}
                 />
                 <RecentTransactions
-                    transactions={transactions}
-                    wallets={wallets}
+                    transactions={dashboard.recent_transactions}
+                    wallets={dashboard.wallets}
                 />
             </div>
         </main>

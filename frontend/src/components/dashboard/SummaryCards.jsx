@@ -1,48 +1,32 @@
 import "../../styles/dashboard.css";
 
-function SummaryCards({ wallets, transactions }) {
-
-    const totalBalance = wallets.reduce(
-        (sum, wallet) =>
-            sum + Number(wallet.balance), 0);
-
-    const totalIncome = transactions
-        .filter((transaction) =>
-            transaction.transaction_type === "income")
-        .reduce((sum, transaction) =>
-                sum + Number(transaction.amount), 0);
-
-    const totalExpense = transactions
-        .filter((transaction) =>
-            transaction.transaction_type === "expense")
-        .reduce((sum, transaction) =>
-                sum + Number(transaction.amount), 0);
+function SummaryCards({ summary }) {
 
     const cards = [
         {
             title: "Total Balance",
-            value: `₹${totalBalance.toLocaleString("en-IN")}`,
-            subtitle: `Across ${wallets.length} wallets`,
-            className: "balance-card"
+            value: `₹${Number(summary.total_balance).toLocaleString("en-IN")}`,
+            subtitle: `Across ${summary.total_wallets} wallets`,
+            className: "balance-card",
         },
         {
             title: "Income",
-            value: `₹${totalIncome.toLocaleString("en-IN")}`,
+            value: `₹${Number(summary.total_income).toLocaleString("en-IN")}`,
             subtitle: "All Time",
-            className: "income-card"
+            className: "income-card",
         },
         {
             title: "Expenses",
-            value: `₹${totalExpense.toLocaleString("en-IN")}`,
+            value: `₹${Number(summary.total_expense).toLocaleString("en-IN")}`,
             subtitle: "All Time",
-            className: "expense-card"
+            className: "expense-card",
         },
         {
             title: "Transactions",
-            value: transactions.length,
+            value: summary.total_transactions,
             subtitle: "Total",
-            className: "transactions-card"
-        }
+            className: "transactions-card",
+        },
     ];
 
     return (

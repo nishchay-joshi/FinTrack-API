@@ -3,17 +3,8 @@ import "../../styles/dashboard.css";
 
 function RecentTransactions({ transactions, wallets }) {
 
-    const recentTransactions = [...transactions]
-        .sort((a, b) =>
-                new Date(b.timestamp) -
-                new Date(a.timestamp)
-        ).slice(0, 5);
-
     const walletLookup = Object.fromEntries(
-        wallets.map((wallet) => [
-            wallet.id,
-            wallet.name
-        ])
+        wallets.map((wallet) => [wallet.id, wallet.name])
     );
 
     return (
@@ -30,39 +21,45 @@ function RecentTransactions({ transactions, wallets }) {
                 </Link>
             </div>
             <div className="transaction-list">
-                {recentTransactions.map((transaction) => (
-                    <div
-                        key={transaction.id}
-                        className="transaction-row"
-                    >
-                        <span className="transaction-date">
-                            {new Date(transaction.timestamp)
-                                .toLocaleDateString(
-                                    "en-IN",
-                                    {
-                                        day: "numeric",
-                                        month: "short"
-                                    }
-                                )}
-                        </span>
-                        <span className="transaction-title">
-                            {transaction.note || "Untitled"}
-                        </span>
-                        <span className="transaction-wallet">
-                            {walletLookup[transaction.wallet_id] ?? "Unknown"}
-                        </span>
-                        <span
-                            className={`transaction-amount ${transaction.transaction_type}`}
+                {transactions.length === 0 ? (
+                    <p className="empty-state">
+                        No transactions yet.
+                    </p>
+                ) : (
+                    transactions.map((transaction) => (
+                        <div
+                            key={transaction.id}
+                            className="transaction-row"
                         >
-                            {transaction.transaction_type === "expense"
-                                ? "-"
-                                : transaction.transaction_type === "income"
-                                ? "+"
-                                : "⇄"}
-                            ₹{Number(transaction.amount).toLocaleString("en-IN")}
-                        </span>
-                    </div>
-                ))}
+                            <span className="transaction-date">
+                                {new Date(transaction.timestamp)
+                                    .toLocaleDateString(
+                                        "en-IN",
+                                        {
+                                            day: "numeric",
+                                            month: "short",
+                                        }
+                                    )}
+                            </span>
+                            <span className="transaction-title">
+                                {transaction.note || "Untitled"}
+                            </span>
+                            <span className="transaction-wallet">
+                                {walletLookup[transaction.wallet_id] ?? "Unknown"}
+                            </span>
+                            <span
+                                className={`transaction-amount ${transaction.transaction_type}`}
+                            >
+                                {transaction.transaction_type === "expense"
+                                    ? "-"
+                                    : transaction.transaction_type === "income"
+                                        ? "+"
+                                        : "⇄"}
+                                ₹{Number(transaction.amount).toLocaleString("en-IN")}
+                            </span>
+                        </div>
+                    ))
+                )}
             </div>
         </section>
     );
