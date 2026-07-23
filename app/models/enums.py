@@ -28,3 +28,10 @@ class CategoryColor(str, Enum):
     RED = "red"
     YELLOW = "yellow"
     PINK = "pink"
+
+
+class AnalyticsRange(str, Enum):
+    LAST_7_DAYS = "7d"
+    LAST_30_DAYS = "30d"
+    LAST_90_DAYS = "90d"
+    LAST_YEAR = "1y"

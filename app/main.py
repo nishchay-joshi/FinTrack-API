@@ -8,7 +8,14 @@ from app.models.user_model import User
 from app.models.wallet_model import Wallet
 from app.models.transaction_model import Transaction
 from app.models.category_model import Category
-from app.routers import auth_router, wallet_router, category_router, transaction_router, dashboard_router
+from app.routers import (
+    auth_router,
+    wallet_router,
+    category_router,
+    transaction_router,
+    dashboard_router,
+    analytics_router
+)
 
 
 @asynccontextmanager
@@ -25,6 +32,7 @@ app.include_router(wallet_router.router, prefix="/api/wallet", tags=["wallet"])
 app.include_router(category_router.router, prefix="/api/category", tags=["category"])
 app.include_router(transaction_router.router, prefix="/api/transaction", tags=["transaction"])
 app.include_router(dashboard_router.router, prefix="/api/dashboard", tags=["dashboard"])
+app.include_router(analytics_router.router, prefix="/api/analytics", tags=["analytics"])
 
 app.add_middleware(
     CORSMiddleware,
