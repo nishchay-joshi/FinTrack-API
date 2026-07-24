@@ -4,6 +4,7 @@ import "../styles/analytics.css";
 import AnalyticsCards from "../components/analytics/AnalyticsCards";
 import IncomeExpenseChart from "../components/analytics/IncomeExpenseChart";
 import CategoryPieChart from "../components/analytics/CategoryPieChart";
+import InsightsModal from "../components/modals/InsightsModal";
 
 function Analytics() {
 
@@ -78,10 +79,11 @@ function Analytics() {
             {isInsightsOpen && (
                 <div className="placeholder-modal">
                     <h2>Insights</h2>
-                    <button
-                        onClick={() =>setIsInsightsOpen(false)}
-                    >Close
-                    </button>
+                    <InsightsModal
+                        isOpen={isInsightsOpen}
+                        onClose={() => setIsInsightsOpen(false)}
+                        insights={analytics.insights}
+                    />
                 </div>
             )}
         </main>
