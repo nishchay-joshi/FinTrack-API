@@ -1,10 +1,10 @@
 .analytics-page {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    padding: 2rem;
+    gap: 1.25rem;
     width: 100%;
     height: 100%;
+    padding: 0;
     overflow: hidden;
 }
 
@@ -15,81 +15,38 @@
 }
 
 .analytics-header h1 {
+    margin: 0;
     font-size: 2rem;
-    margin-bottom: 0.25rem;
 }
 
 .analytics-header p {
+    margin-top: .3rem;
     color: #9ca3af;
 }
 
 .analytics-actions {
     display: flex;
-    gap: 1rem;
     align-items: center;
+    gap: 1rem;
 }
 
 .analytics-actions select,
 .analytics-actions button {
-    padding: 0.7rem 1rem;
-    border-radius: 10px;
+    padding: .7rem 1rem;
     border: none;
+    border-radius: 10px;
     cursor: pointer;
 }
 
 .analytics-summary {
-    height: 150px;
-}
-
-.analytics-charts {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 1.5rem;
-}
-
-.placeholder-card,
-.placeholder-chart {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    color: #9ca3af;
-    font-size: 1rem;
-}
-
-.placeholder-card {
-    height: 100%;
-}
-
-.placeholder-chart {
-    height: 100%;
-}
-
-.analytics-loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-.placeholder-modal {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    background: rgba(0,0,0,0.6);
+    height: 135px;
+    flex-shrink: 0;
 }
 
 .analytics-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
+    gap: 1rem;
     height: 100%;
 }
 
@@ -97,31 +54,173 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1.25rem;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    transition: 0.25s ease;
+    padding: 1.2rem;
+    border-radius: 14px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    transition: .2s ease;
 }
 
 .analytics-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
 .analytics-card-top {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: .7rem;
+
     color: #bdbdbd;
 }
 
 .analytics-card-body h2 {
-    margin-top: 1rem;
-    margin-bottom: 0.35rem;
-    font-size: 1.75rem;
+    margin: .8rem 0 .2rem;
 }
 
 .analytics-card-body p {
     color: #9ca3af;
-    font-size: 0.9rem;
+}
+
+/* ---------------- CHARTS ---------------- */
+
+.analytics-charts {
+    flex: 1;
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+
+    gap: 1.5rem;
+
+    min-height: 0;
+}
+
+.analytics-chart-card {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 0;
+
+    padding: 1.5rem;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.05);
+
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+.analytics-chart-header {
+    margin-bottom: 1rem;
+}
+
+.analytics-chart-header h2 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.analytics-chart-header p {
+    margin-top: .3rem;
+    color: #9ca3af;
+}
+
+.analytics-chart-body {
+    flex: 1;
+}
+
+/* ---------------- PIE ---------------- */
+
+.pie-chart-content {
+    display: flex;
+
+    align-items: center;
+
+    gap: 1rem;
+
+    flex: 1;
+}
+
+.pie-chart-wrapper {
+    flex: 1;
+
+    height: 320px;
+}
+
+.pie-legend {
+    width: 150px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: .8rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+}
+
+.legend-item strong {
+    display: block;
+}
+
+.legend-item p {
+    color: #9ca3af;
+    font-size: .85rem;
+}
+
+/* ---------------- RECHARTS ---------------- */
+
+.recharts-responsive-container {
+    width: 100% !important;
+}
+
+.recharts-cartesian-grid-horizontal line {
+    stroke: rgba(255,255,255,.08);
+}
+
+.recharts-cartesian-axis-tick-value {
+    fill: #bdbdbd;
+    font-size: 13px;
+}
+
+.recharts-legend-item-text {
+    color: white !important;
+}
+
+.recharts-default-tooltip {
+    border-radius: 12px !important;
+    border: none !important;
+}
+
+.analytics-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+}
+
+.placeholder-modal {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    gap: 1rem;
+
+    background: rgba(0,0,0,.6);
 }

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import api from "../services/api";
 import "../styles/analytics.css";
 import AnalyticsCards from "../components/analytics/AnalyticsCards";
+import IncomeExpenseChart from "../components/analytics/IncomeExpenseChart";
+import CategoryPieChart from "../components/analytics/CategoryPieChart";
 
 function Analytics() {
 
@@ -66,12 +68,12 @@ function Analytics() {
                 <AnalyticsCards summary={analytics.summary}/>
             </section>
             <section className="analytics-charts">
-                <div className="placeholder-chart">
-                    Income vs Expense Chart
-                </div>
-                <div className="placeholder-chart">
-                    Category Breakdown
-                </div>
+                <IncomeExpenseChart
+                    data={analytics.income_vs_expense}
+                />
+                <CategoryPieChart
+                    data={analytics.category_breakdown}
+                />
             </section>
             {isInsightsOpen && (
                 <div className="placeholder-modal">
