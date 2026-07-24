@@ -8,6 +8,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Transactions from "./pages/Transactions.jsx";
 import Categories from "./pages/Categories.jsx";
+import Analytics from "./pages/Analytics.jsx";
 
 function App() {
 
@@ -49,10 +50,10 @@ function App() {
                         path="/transactions"
                         element={<Transactions />}
                     />
-                    {/*<Route*/}
-                    {/*    path="/analytics"*/}
-                    {/*    element={<Analytics />}*/}
-                    {/*/>*/}
+                    <Route
+                        path="/analytics"
+                        element={<Analytics />}
+                    />
                     <Route
                         path="/categories"
                         element={<Categories />}
