@@ -1,6 +1,11 @@
-import {Pencil} from "lucide-react";
+import { Pencil } from "lucide-react";
 
-function TransactionTable({ transactions, walletLookup, categoryLookup, onEdit }) {
+function TransactionTable({
+    transactions,
+    walletLookup,
+    categoryLookup,
+    onEdit,
+}) {
 
     if (transactions.length === 0) {
         return (
@@ -8,6 +13,18 @@ function TransactionTable({ transactions, walletLookup, categoryLookup, onEdit }
                 <h2>No transactions yet</h2>
                 <p>Create your first transaction to get started.</p>
             </div>
+        );
+    }
+
+    function getCategory(transaction) {
+        if (transaction.transaction_type === "income") {
+            return "Income";
+        }
+        if (transaction.transaction_type === "transfer") {
+            return "Transfer";
+        }
+        return (
+            categoryLookup[transaction.category_id] ?? "-"
         );
     }
 
@@ -30,9 +47,7 @@ function TransactionTable({ transactions, walletLookup, categoryLookup, onEdit }
                         {walletLookup[transaction.wallet_id]}
                     </span>
                     <span>
-                        {transaction.category_id
-                        ? categoryLookup[transaction.category_id]
-                        : "Transfer"}
+                        {getCategory(transaction)}
                     </span>
                     <span>
                         {transaction.note || "-"}
@@ -44,15 +59,13 @@ function TransactionTable({ transactions, walletLookup, categoryLookup, onEdit }
                         ₹{Number(transaction.amount).toLocaleString("en-IN")}
                     </span>
                     <span>
-                        {new Date(
-                            transaction.timestamp
-                        ).toLocaleDateString("en-IN")}
+                        {new Date(transaction.timestamp).toLocaleDateString("en-IN")}
                     </span>
                     <button
                         className="edit-transaction-btn"
                         onClick={() => onEdit(transaction)}
                     >
-                    <Pencil size={20} />
+                        <Pencil size={20} />
                     </button>
                 </div>
             ))}

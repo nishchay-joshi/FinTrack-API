@@ -22,28 +22,39 @@ function TransactionModal({
 
         if (!isOpen) return;
         if (transaction) {
-            console.log(transaction);
             setWalletId(transaction.wallet_id);
             setCategoryId(transaction.category_id ?? "");
             setAmount(transaction.amount);
             setTransactionType(transaction.transaction_type);
-            setNote(transaction.note ?? "-");
+            setNote(transaction.note ?? "");
         } else {
             setWalletId(wallets[0]?.id ?? "");
             setCategoryId(categories[0]?.id ?? "");
             setAmount("");
             setTransactionType("expense");
-            setNote("-");
+            setNote("");
         }
     }, [transaction, wallets, categories, isOpen]);
+
+    useEffect(() => {
+        if (transactionType !== "expense") {
+            setCategoryId("");
+        } else if (!categoryId && categories.length > 0) {
+            setCategoryId(categories[0].id);
+        }
+    }, [transactionType, categories]);
 
     async function handleSubmit(event) {
         event.preventDefault();
 
+        if (transactionType === "expense" && !categoryId) {
+            alert("Please select a category.");
+            return;
+        }
         setLoading(true);
         const payload = {
             wallet_id: Number(walletId),
-            category_id: Number(categoryId),
+            category_id: transactionType === "expense" ? Number(categoryId) : null,
             amount: Number(amount),
             transaction_type: transactionType,
             note,
@@ -139,26 +150,28 @@ function TransactionModal({
                                 ))}
                             </select>
                         </div>
-                        <div className="form-group">
-                            <label>
-                                Category
-                            </label>
-                            <select
-                                value={categoryId}
-                                onChange={(event) =>
-                                    setCategoryId(event.target.value)
-                                }
-                            >
-                                {categories.map((category) => (
-                                    <option
-                                        key={category.id}
-                                        value={category.id}
-                                    >
-                                        {category.name}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                        {transactionType === "expense" && (
+                            <div className="form-group">
+                                <label>
+                                    Category
+                                </label>
+                                <select
+                                    value={categoryId}
+                                    onChange={(event) =>
+                                        setCategoryId(event.target.value)
+                                    }
+                                >
+                                    {categories.map((category) => (
+                                        <option
+                                            key={category.id}
+                                            value={category.id}
+                                        >
+                                            {category.name}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        )}
                     </div>
                     <div className="form-group">
                         <label>

@@ -20,7 +20,6 @@ function CategoryModal({
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        console.log("Category received: ", category)
         if (!isOpen) return;
 
         if (category) {
