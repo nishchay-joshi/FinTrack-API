@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Plus} from "lucide-react";
+import { Link } from "react-router-dom";
 import api from "../../services/api";
 import crown from "../../assets/doodles/crown.svg";
 import arrow from "../../assets/doodles/arrow.svg";
@@ -50,13 +50,10 @@ function Hero() {
                     alt=""
                     className="hero-arrow"
                 />
-                <button className="new-transaction-button">
-                    <Plus size={20} />
-                    <span>
-                        New Transaction
-                    </span>
-                </button>
-
+                <Link
+                    to="/profile"
+                    className="profile-btn"
+                >View Profile</Link>
             </div>
         </section>
     );

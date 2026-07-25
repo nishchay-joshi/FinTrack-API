@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Transactions from "./pages/Transactions.jsx";
 import Categories from "./pages/Categories.jsx";
 import Analytics from "./pages/Analytics.jsx";
+import Profile from "./pages/Profile";
 
 function App() {
 
@@ -57,6 +58,10 @@ function App() {
                     <Route
                         path="/categories"
                         element={<Categories />}
+                    />
+                    <Route
+                        path="/profile"
+                        element={<Profile />}
                     />
                 </Route>
             </Routes>
