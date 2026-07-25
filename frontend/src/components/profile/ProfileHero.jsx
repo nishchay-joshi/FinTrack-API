@@ -2,50 +2,38 @@ import {
     User,
     Mail,
     CalendarDays,
-    Pencil,
-    KeyRound,
 } from "lucide-react";
 
 import "../../styles/profile.css";
 
-function ProfileHero({
-    onEditProfile,
-    onChangePassword,
-}) {
+function ProfileHero({ profile }) {
 
     return (
         <section className="profile-hero">
             <div className="profile-avatar">
-                <User size={48} />
+                <User size={52} />
             </div>
             <div className="profile-details">
-                <h2>Nishchay Joshi</h2>
+                <h2>{profile.name}</h2>
                 <div className="profile-info">
                     <div className="profile-info-item">
                         <Mail size={18} />
-                        <span>nishchay@example.com</span>
+                        <span>{profile.email}</span>
                     </div>
                     <div className="profile-info-item">
                         <CalendarDays size={18} />
-                        <span>Joined July 2026</span>
+                        <span>
+                            Joined{" "}
+                            {new Date(profile.joined_at).toLocaleDateString(
+                                "en-IN",
+                                {
+                                    month: "long",
+                                    year: "numeric",
+                                },
+                            )}
+                        </span>
                     </div>
                 </div>
-            </div>
-            <div className="profile-actions">
-                <button
-                    className="primary-btn"
-                    onClick={onEditProfile}
-                >
-                    <Pencil size={18} />
-                    Edit Profile
-                </button>
-                <button
-                    className="secondary-btn"
-                    onClick={onChangePassword}
-                >
-                    <KeyRound size={18} />
-                    Change Password
-                </button>
             </div>
         </section>
     );
