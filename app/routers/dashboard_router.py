@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.auth import CurrentUser
 from app.database.session import get_db
-from app.schemas.responses.dashboard_schema import DashboardResponse, DashboardSummary
+from app.schemas.responses.dashboard import DashboardResponse, DashboardSummary
 from app.queries.wallet_queries import get_total_balance, get_wallet_count
 from app.queries.transaction_queries import get_total_income, get_total_expense, get_transaction_count, get_recent_transactions
 from app.services.wallet_service import get_all_wallets

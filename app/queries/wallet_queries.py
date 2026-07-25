@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.transaction_model import Transaction
 from app.models.user_model import User
 from app.models.wallet_model import Wallet
-from app.schemas.responses.analytics_schema import MostUsedWallet
+from app.schemas.responses.analytics import MostUsedWallet
 
 
 async def get_total_balance(current_user: User, db: AsyncSession):

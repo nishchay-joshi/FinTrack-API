@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.auth import CurrentUser
 from app.database.session import get_db
 from app.models.enums import AnalyticsRange
-from app.schemas.responses.analytics_schema import AnalyticsInsights, AnalyticsResponse, AnalyticsSummary
+from app.schemas.responses.analytics import AnalyticsInsights, AnalyticsResponse, AnalyticsSummary
 from app.queries.wallet_queries import get_most_used_wallet
 from app.queries.category_queries import get_category_breakdown, get_most_frequent_category, get_top_category
 from app.queries.transaction_queries import (

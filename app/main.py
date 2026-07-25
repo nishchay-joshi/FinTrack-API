@@ -14,7 +14,8 @@ from app.routers import (
     category_router,
     transaction_router,
     dashboard_router,
-    analytics_router
+    analytics_router,
+    profile_router
 )
 
 
@@ -33,6 +34,7 @@ app.include_router(category_router.router, prefix="/api/category", tags=["catego
 app.include_router(transaction_router.router, prefix="/api/transaction", tags=["transaction"])
 app.include_router(dashboard_router.router, prefix="/api/dashboard", tags=["dashboard"])
 app.include_router(analytics_router.router, prefix="/api/analytics", tags=["analytics"])
+app.include_router(profile_router.router, prefix="/api/profile", tags=["Profile"])
 
 app.add_middleware(
     CORSMiddleware,
