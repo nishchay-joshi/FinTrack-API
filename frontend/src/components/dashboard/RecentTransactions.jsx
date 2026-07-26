@@ -41,12 +41,12 @@ function RecentTransactions({ transactions, wallets }) {
                                         }
                                     )}
                             </span>
-                            <span className="transaction-title">
+                            <div className="transaction-title">
                                 {transaction.note || "Untitled"}
-                            </span>
-                            <span className="transaction-wallet">
+                            </div>
+                            <div className="transaction-wallet">
                                 {walletLookup[transaction.wallet_id] ?? "Unknown"}
-                            </span>
+                            </div>
                             <span
                                 className={`transaction-amount ${transaction.transaction_type}`}
                             >
