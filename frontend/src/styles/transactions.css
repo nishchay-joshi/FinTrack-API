@@ -36,12 +36,12 @@
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 
 .new-transaction-button {
     background: #111827;
-    color: white;
+    color: #ffffff;
 }
 
 .new-transaction-button:hover {
@@ -49,20 +49,20 @@
 }
 
 .transfer-button {
-    background: white;
+    background: #ffffff;
     border: 1px solid #d1d5db;
     color: #111827;
 }
 
 .transfer-button:hover {
-    background: #f9fafb;
+    background: #f5f5f5;
 }
 
 .transaction-table {
-    background: white;
+    background: #ffffff;
     border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .transaction-header,
@@ -70,49 +70,82 @@
     display: grid;
     grid-template-columns:
         1.4fr
-        1.4fr
+        1.25fr
+        2fr
         1fr
-        1fr
-        1.2fr
-        80px;
+        0.9fr
+        60px;
     align-items: center;
-    padding: 1rem 1.5rem;
-    text-transform: capitalize;
+    column-gap: 1rem;
 }
 
 .transaction-header {
+    padding: 1rem 1.5rem;
     background: #f8f8f8;
+    border-bottom: 1px solid #e5e7eb;
     font-weight: 600;
     color: #4b5563;
-    border-bottom: 1px solid #e5e7eb;
 }
 
-.transaction-row:not(:last-child) {
+.transaction-row {
+    padding: 0.75rem 1.5rem;
     border-bottom: 1px solid #f1f5f9;
 }
 
-.transaction-row:hover {
-    background: #fafafa;
+.transaction-row:last-child {
+    border-bottom: none;
+}
+
+.amount-column,
+.transaction-amount {
+    justify-self: end;
+}
+
+.date-column,
+.transaction-date {
+    justify-self: end;
+}
+
+.transaction-amount {
+    font-weight: 700;
+}
+
+.transaction-amount.expense {
+    color: #ef4444;
+}
+
+.transaction-amount.income {
+    color: #16a34a;
+}
+
+.transaction-amount.transfer {
+    color: #2563eb;
 }
 
 .edit-transaction-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+
+    width: 34px;
+    height: 34px;
+
+    padding: 0;
+    margin: 0;
+
     border: none;
     background: transparent;
     color: #2563eb;
     cursor: pointer;
-    font-weight: 600;
-}
-
-.edit-transaction-btn:hover {
-    text-decoration: underline;
 }
 
 .empty-state {
-    background: white;
+    background: #ffffff;
     border-radius: 18px;
     padding: 5rem 2rem;
     text-align: center;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .empty-state h2 {

@@ -23,9 +23,7 @@ function TransactionTable({
         if (transaction.transaction_type === "transfer") {
             return "Transfer";
         }
-        return (
-            categoryLookup[transaction.category_id] ?? "-"
-        );
+        return categoryLookup[transaction.category_id] ?? "-";
     }
 
     return (
@@ -34,9 +32,9 @@ function TransactionTable({
                 <span>Wallet</span>
                 <span>Category</span>
                 <span>Note</span>
-                <span>Type</span>
-                <span>Amount</span>
-                <span>Date</span>
+                <span className="amount-column">Amount</span>
+                <span className="date-column">Date</span>
+                <span></span>
             </div>
             {transactions.map((transaction) => (
                 <div
@@ -52,20 +50,19 @@ function TransactionTable({
                     <span>
                         {transaction.note || "-"}
                     </span>
-                    <span>
-                        {transaction.transaction_type}
-                    </span>
-                    <span>
+                    <span
+                        className={`transaction-amount ${transaction.transaction_type}`}
+                    >
                         ₹{Number(transaction.amount).toLocaleString("en-IN")}
                     </span>
-                    <span>
+                    <span className="transaction-date">
                         {new Date(transaction.timestamp).toLocaleDateString("en-IN")}
                     </span>
                     <button
                         className="edit-transaction-btn"
                         onClick={() => onEdit(transaction)}
                     >
-                        <Pencil size={20} />
+                        <Pencil size={18} />
                     </button>
                 </div>
             ))}
