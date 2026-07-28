@@ -2,10 +2,10 @@ from fastapi import HTTPException, status
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models.category_model import Category
-from app.models.transaction_model import Transaction
-from app.models.user_model import User
-from app.schemas.category_schema import CategoryCreate, CategoryUpdate
+from backend.app.models.category_model import Category
+from backend.app.models.transaction_model import Transaction
+from backend.app.models.user_model import User
+from backend.app.schemas.category_schema import CategoryCreate, CategoryUpdate
 
 
 async def create_category(

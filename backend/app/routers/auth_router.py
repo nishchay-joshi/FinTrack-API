@@ -2,10 +2,10 @@ from typing import Annotated
 from fastapi import APIRouter, status, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.database.session import get_db
-from app.services.user_service import create_user, login_user
-from app.schemas.user_schema import UserCreate, UserResponse, Token, UserLogin
-from app.core.auth import CurrentUser
+from backend.app.database.session import get_db
+from backend.app.services.user_service import create_user, login_user
+from backend.app.schemas.user_schema import UserCreate, UserResponse, Token, UserLogin
+from backend.app.core.auth import CurrentUser
 
 router = APIRouter()
 

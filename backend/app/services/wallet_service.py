@@ -2,9 +2,9 @@ from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
 
-from app.models.wallet_model import Wallet
-from app.models.user_model import User
-from app.schemas.wallet_schema import WalletCreate, WalletUpdate
+from backend.app.models.wallet_model import Wallet
+from backend.app.models.user_model import User
+from backend.app.schemas.wallet_schema import WalletCreate, WalletUpdate
 
 
 async def create_wallet(

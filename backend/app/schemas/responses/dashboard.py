@@ -1,9 +1,9 @@
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict
 
-from app.models.enums import TransactionType
-from app.schemas.wallet_schema import WalletResponse
-from app.schemas.transaction_schema import TransactionResponse
+from backend.app.models.enums import TransactionType
+from backend.app.schemas.wallet_schema import WalletResponse
+from backend.app.schemas.transaction_schema import TransactionResponse
 
 
 class DashboardSummary(BaseModel):

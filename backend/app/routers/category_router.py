@@ -2,10 +2,10 @@ from typing import Annotated
 from fastapi import APIRouter, status, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.database.session import get_db
-from app.schemas.category_schema import CategoryCreate, CategoryResponse, CategoryUpdate
-from app.services.category_service import create_category, get_all_categories, delete_category, update_category
-from app.core.auth import CurrentUser
+from backend.app.database.session import get_db
+from backend.app.schemas.category_schema import CategoryCreate, CategoryResponse, CategoryUpdate
+from backend.app.services.category_service import create_category, get_all_categories, delete_category, update_category
+from backend.app.core.auth import CurrentUser
 
 router = APIRouter()
 

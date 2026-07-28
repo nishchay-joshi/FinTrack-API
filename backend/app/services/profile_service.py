@@ -1,9 +1,9 @@
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.queries.wallet_queries import get_wallet_count
-from app.queries.category_queries import get_category_count
-from app.queries.transaction_queries import get_transaction_count
-from app.schemas.responses.profile import ProfileResponse
-from app.models.user_model import User
+from backend.app.queries.wallet_queries import get_wallet_count
+from backend.app.queries.category_queries import get_category_count
+from backend.app.queries.transaction_queries import get_transaction_count
+from backend.app.schemas.responses.profile import ProfileResponse
+from backend.app.models.user_model import User
 
 
 async def get_profile(current_user: User, db: AsyncSession):

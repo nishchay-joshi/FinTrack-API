@@ -3,13 +3,13 @@ from datetime import UTC, datetime, timedelta
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.auth import CurrentUser
-from app.database.session import get_db
-from app.models.enums import AnalyticsRange
-from app.schemas.responses.analytics import AnalyticsInsights, AnalyticsResponse, AnalyticsSummary
-from app.queries.wallet_queries import get_most_used_wallet
-from app.queries.category_queries import get_category_breakdown, get_most_frequent_category, get_top_category
-from app.queries.transaction_queries import (
+from backend.app.core.auth import CurrentUser
+from backend.app.database.session import get_db
+from backend.app.models.enums import AnalyticsRange
+from backend.app.schemas.responses.analytics import AnalyticsInsights, AnalyticsResponse, AnalyticsSummary
+from backend.app.queries.wallet_queries import get_most_used_wallet
+from backend.app.queries.category_queries import get_category_breakdown, get_most_frequent_category, get_top_category
+from backend.app.queries.transaction_queries import (
     get_average_daily_spend,
     get_expense_transaction_count,
     get_income_vs_expense,

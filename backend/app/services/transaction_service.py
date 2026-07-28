@@ -3,12 +3,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 import uuid
 
-from app.models.transaction_model import Transaction
-from app.models.wallet_model import Wallet
-from app.models.category_model import Category
-from app.models.user_model import User
-from app.schemas.transaction_schema import TransactionCreate, TransactionUpdate, TransferCreate
-from app.models.enums import TransactionType
+from backend.app.models.transaction_model import Transaction
+from backend.app.models.wallet_model import Wallet
+from backend.app.models.category_model import Category
+from backend.app.models.user_model import User
+from backend.app.schemas.transaction_schema import TransactionCreate, TransactionUpdate, TransferCreate
+from backend.app.models.enums import TransactionType
 
 
 async def _get_wallet(wallet_id: int, current_user: User, db: AsyncSession):

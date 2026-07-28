@@ -4,7 +4,7 @@ __pycache__/
 *.pyc
 
 # Environment variables
-app/.env
+backend/.env
 
 # React/Vite
 frontend/node_modules/

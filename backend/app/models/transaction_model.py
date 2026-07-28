@@ -4,8 +4,8 @@ from datetime import UTC, datetime
 from sqlalchemy import DateTime, Integer, String, Float, ForeignKey, Enum
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from app.database.base import Base
-from app.models.enums import TransactionType
+from backend.app.database.base import Base
+from backend.app.models.enums import TransactionType
 
 class Transaction(Base):
     __tablename__ = "transactions"

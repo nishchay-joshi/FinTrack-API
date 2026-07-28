@@ -2,21 +2,10 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.database.database import engine
-from app.database.base import Base
-from app.models.user_model import User
-from app.models.wallet_model import Wallet
-from app.models.transaction_model import Transaction
-from app.models.category_model import Category
-from app.routers import (
-    auth_router,
-    wallet_router,
-    category_router,
-    transaction_router,
-    dashboard_router,
-    analytics_router,
-    profile_router
-)
+from backend.app.database.database import engine
+from backend.app.database.base import Base
+from backend.app.routers import auth_router, category_router, analytics_router, dashboard_router, transaction_router, \
+    wallet_router, profile_router
 
 
 @asynccontextmanager
