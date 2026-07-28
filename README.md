@@ -35,49 +35,47 @@ FinTrack was developed as a portfolio project to strengthen full-stack developme
 
 # Screenshots
 
-> Replace the placeholders below with screenshots after deployment.
-
 ## Authentication
 
 | Login | Register |
 |-------|----------|
-| ![](assets/login.png) | ![](assets/register.png) |
+| ![](frontend/src/assets/login.png) | ![](frontend.src.assets/register.png) |
 
 ---
 
 ## Dashboard
 
-![](assets/dashboard.png)
+![](frontend/src/assets/dashboard.png)
 
 ---
 
 ## Wallet Management
 
-![](assets/wallets.png)
+![](frontend/src/assets/wallets.png)
 
 ---
 
 ## Category Management
 
-![](assets/categories.png)
+![](frontend/src/assets/categories.png)
 
 ---
 
 ## Transaction Management
 
-![](assets/transactions.png)
+![](frontend/src/assets/transactions.png)
 
 ---
 
 ## Analytics
 
-![](assets/analytics.png)
+![](frontend/src/assets/analytics.png)
 
 ---
 
 ## Profile
 
-![](assets/profile.png)
+![](frontend/src/assets/profile.png)
 
 ---
 

@@ -17,11 +17,12 @@
 .analytics-header h1 {
     margin: 0;
     font-size: 2rem;
+    color: #1f2937;
 }
 
 .analytics-header p {
     margin-top: .3rem;
-    color: #9ca3af;
+    color: #6b7280;
 }
 
 .analytics-actions {
@@ -30,11 +31,25 @@
     gap: 1rem;
 }
 
-.analytics-actions select,
+.analytics-actions select {
+    padding: .8rem 1rem;
+    border: 1px solid #e3d5b7;
+    border-radius: 12px;
+    background: #fbf7ef;
+    color: #1f2937;
+    font-size: .95rem;
+    font-weight: 500;
+    outline: none;
+}
+
 .analytics-actions button {
-    padding: .7rem 1rem;
+    padding: .8rem 1.4rem;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
+    background: #111827;
+    color: #ffffff;
+    font-size: .95rem;
+    font-weight: 600;
     cursor: pointer;
 }
 
@@ -55,29 +70,26 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 1.2rem;
-    border-radius: 14px;
-    background: rgba(255,255,255,.05);
-    border: 1px solid rgba(255,255,255,.08);
-    transition: .2s ease;
-}
-
-.analytics-card:hover {
-    transform: translateY(-2px);
+    border-radius: 18px;
+    background: #fbf7ef;
+    border: 1px solid #ece2cf;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, .05);
 }
 
 .analytics-card-top {
     display: flex;
     align-items: center;
     gap: .7rem;
-    color: #bdbdbd;
+    color: #6b7280;
 }
 
 .analytics-card-body h2 {
     margin: .8rem 0 .2rem;
+    color: #1f2937;
 }
 
 .analytics-card-body p {
-    color: #9ca3af;
+    color: #6b7280;
 }
 
 .analytics-charts {
@@ -92,10 +104,11 @@
     display: flex;
     flex-direction: column;
     min-height: 0;
-    padding: 1rem;
-    border-radius: 1px;
-    background: rgba(255,255,255,.05);
-    border: 1px solid rgba(255,255,255,.08);
+    padding: 1.25rem;
+    border-radius: 18px;
+    background: #fbf7ef;
+    border: 1px solid #ece2cf;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, .05);
 }
 
 .analytics-chart-header {
@@ -105,13 +118,13 @@
 .analytics-chart-header h2 {
     margin: 0;
     font-size: 1.1rem;
+    color: #1f2937;
 }
 
 .analytics-chart-header p {
     margin-top: .3rem;
-    color: #9ca3af;
+    color: #6b7280;
 }
-
 .analytics-chart-body {
     flex: 1;
 }
@@ -135,10 +148,13 @@
     gap: .8rem;
 }
 
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: .75rem;
+.legend-item p {
+    color: #6b7280;
+    font-size: .85rem;
+}
+
+.legend-item strong {
+    color: #1f2937;
 }
 
 .legend-color {
@@ -146,10 +162,6 @@
     height: 12px;
     border-radius: 50%;
     flex-shrink: 0;
-}
-
-.legend-item strong {
-    display: block;
 }
 
 .legend-item p {
@@ -162,16 +174,16 @@
 }
 
 .recharts-cartesian-grid-horizontal line {
-    stroke: rgba(255,255,255,.08);
+    stroke: #e7dbc3;
 }
 
 .recharts-cartesian-axis-tick-value {
-    fill: #bdbdbd;
+    fill: #7b8794;
     font-size: 13px;
 }
 
 .recharts-legend-item-text {
-    color: white !important;
+    color: #4b5563 !important;
 }
 
 .recharts-default-tooltip {
@@ -184,6 +196,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    color: #6b7280;
 }
 
 .placeholder-modal {
@@ -229,8 +242,8 @@
     border: none;
     border-radius: 10px;
     background: #efe2c6;
+    color: #374151;
     cursor: pointer;
-    transition: .2s;
 }
 
 .close-btn:hover {
