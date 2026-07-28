@@ -1,5 +1,5 @@
 import { Pencil, Trash2 } from "lucide-react";
-import { getCategoryIcon } from "../../utils/categoryOptions";
+import { getCategoryIcon } from "../../utils/categoryOptions.js";
 
 function CategoryCard({
     category,

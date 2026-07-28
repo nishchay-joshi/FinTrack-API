@@ -4,7 +4,7 @@ import {
     CATEGORY_ICONS,
     CATEGORY_ICON_OPTIONS,
     CATEGORY_COLORS,
-} from "../../utils/categoryOptions";
+} from "../../utils/categoryOptions.js";
 import "../../styles/modal.css";
 
 function CategoryModal({
