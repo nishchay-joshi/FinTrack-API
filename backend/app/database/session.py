@@ -1,5 +1,5 @@
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
-from backend.app.database.database import engine
+from app.database.database import engine
 
 AsyncSessionLocal = async_sessionmaker(
     engine,

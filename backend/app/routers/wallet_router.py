@@ -2,10 +2,10 @@ from typing import Annotated
 from fastapi import APIRouter, status, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from backend.app.database.session import get_db
-from backend.app.schemas.wallet_schema import WalletCreate, WalletResponse, WalletUpdate
-from backend.app.services.wallet_service import create_wallet, get_all_wallets, get_wallet, delete_wallet, update_wallet
-from backend.app.core.auth import CurrentUser
+from app.database.session import get_db
+from app.schemas.wallet_schema import WalletCreate, WalletResponse, WalletUpdate
+from app.services.wallet_service import create_wallet, get_all_wallets, get_wallet, delete_wallet, update_wallet
+from app.core.auth import CurrentUser
 
 router = APIRouter()
 

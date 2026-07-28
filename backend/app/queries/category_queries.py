@@ -3,11 +3,11 @@ from datetime import datetime
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from backend.app.models import User
-from backend.app.models.category_model import Category
-from backend.app.models.enums import TransactionType
-from backend.app.models.transaction_model import Transaction
-from backend.app.schemas.responses.analytics import TopCategory, CategoryBreakdown, MostFrequentCategory
+from app.models import User
+from app.models.category_model import Category
+from app.models.enums import TransactionType
+from app.models.transaction_model import Transaction
+from app.schemas.responses.analytics import TopCategory, CategoryBreakdown, MostFrequentCategory
 
 
 async def get_category_count(current_user: User, db: AsyncSession):

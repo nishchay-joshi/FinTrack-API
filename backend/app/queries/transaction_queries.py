@@ -3,10 +3,10 @@ from datetime import datetime, timedelta
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from backend.app.models.enums import TransactionType, AnalyticsRange
-from backend.app.models.transaction_model import Transaction
-from backend.app.models.user_model import User
-from backend.app.schemas.responses.analytics import LargestExpense, LargestIncome, MostActiveDay, IncomeExpenseBucket
+from app.models.enums import TransactionType, AnalyticsRange
+from app.models.transaction_model import Transaction
+from app.models.user_model import User
+from app.schemas.responses.analytics import LargestExpense, LargestIncome, MostActiveDay, IncomeExpenseBucket
 
 
 async def get_total_income(current_user: User, db: AsyncSession):

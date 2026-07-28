@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from backend.app.models.enums import TransactionType
+from app.models.enums import TransactionType
 
 
 class TransactionCreate(BaseModel):

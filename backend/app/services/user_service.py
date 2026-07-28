@@ -4,11 +4,11 @@ from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
-from backend.app.core.auth import create_access_token
-from backend.app.core.config import settings
-from backend.app.schemas.user_schema import UserCreate, Token, UserLogin
-from backend.app.models import user_model
-from backend.app.core.security import hash_password, verify_password
+from app.core.auth import create_access_token
+from app.core.config import settings
+from app.schemas.user_schema import UserCreate, Token, UserLogin
+from app.models import user_model
+from app.core.security import hash_password, verify_password
 
 
 async def create_user(user_data: UserCreate, db: AsyncSession):

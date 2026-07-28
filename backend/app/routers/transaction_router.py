@@ -2,10 +2,10 @@ from typing import Annotated
 from fastapi import APIRouter, status, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from backend.app.database.session import get_db
-from backend.app.schemas.transaction_schema import TransactionCreate, TransactionUpdate, TransactionResponse, TransferCreate
-from backend.app.services.transaction_service import create_transaction, get_transactions, update_transaction, create_transfer
-from backend.app.core.auth import CurrentUser
+from app.database.session import get_db
+from app.schemas.transaction_schema import TransactionCreate, TransactionUpdate, TransactionResponse, TransferCreate
+from app.services.transaction_service import create_transaction, get_transactions, update_transaction, create_transfer
+from app.core.auth import CurrentUser
 
 router = APIRouter()
 

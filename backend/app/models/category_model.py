@@ -4,8 +4,8 @@ from datetime import UTC, datetime
 from sqlalchemy import DateTime, Integer, String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from backend.app.database.base import Base
-from backend.app.models.enums import CategoryIcon, CategoryColor
+from app.database.base import Base
+from app.models.enums import CategoryIcon, CategoryColor
 
 class Category(Base):
     __tablename__ = "categories"

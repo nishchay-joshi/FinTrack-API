@@ -1,5 +1,5 @@
 from datetime import datetime
-from backend.app.models.enums import CategoryIcon, CategoryColor
+from app.models.enums import CategoryIcon, CategoryColor
 from pydantic import BaseModel, ConfigDict, Field
 
 
