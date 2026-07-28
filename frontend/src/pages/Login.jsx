@@ -175,14 +175,6 @@ function Login({ setToken }) {
                             {error}
                         </div>
                     }
-                    <div className="auth-options">
-                        <a
-                            href="#"
-                            className="forgot-password"
-                        >
-                            Forgot Password?
-                        </a>
-                    </div>
                     <button
                         className="auth-button"
                         disabled={loading}
