@@ -29,6 +29,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
+        "https://fintrack-livid-two.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
