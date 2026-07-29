@@ -509,7 +509,7 @@ The backend exposes a RESTful API built with FastAPI. All protected endpoints re
 Before you begin, ensure you have the following installed:
 
 - Python 3.13+
-- Node.js 22+ (or the version compatible with this project)
+- Node.js 22+ 
 - Git
 
 ---
@@ -517,8 +517,8 @@ Before you begin, ensure you have the following installed:
 ## 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd FinTrackAPI
+git clone https://github.com/nishchay-joshi/FinTrack-API
+cd FinTrack-API
 ```
 
 ---
