@@ -37,9 +37,11 @@ FinTrack was developed as a portfolio project to strengthen full-stack developme
 
 ## Authentication
 
-| Login | Register |
-|-------|----------|
-| ![](frontend/src/assets/login.png) | ![](frontend.src.assets/register.png) |
+Login 
+![](frontend/src/assets/login.png)
+
+Register 
+![](frontend/src/assets/register.png)
 
 ---
 
@@ -211,7 +213,6 @@ Features include:
 | API Documentation | Swagger / OpenAPI |
 | Build Tool | Vite |
 | Version Control | Git & GitHub |
-| Deployment | Vercel (Frontend), Render (Backend) |
 
 # Architecture
 
@@ -498,106 +499,6 @@ The backend exposes a RESTful API built with FastAPI. All protected endpoints re
 | GET / POST / PATCH / DELETE | `/api/category` | Category management |
 | GET / POST / PATCH | `/api/transaction` | Transaction management |
 | POST | `/api/transaction/transfer` | Transfer funds between wallets |
-
----
-
-# Installation
-
-## Clone the Repository
-
-```bash
-git clone https://github.com/<your-username>/FinTrack.git
-cd FinTrack
-```
-
----
-
-## Backend Setup
-
-Create a virtual environment.
-
-```bash
-python -m venv .venv
-```
-
-Activate the virtual environment.
-
-**Windows**
-
-```bash
-.venv\Scripts\activate
-```
-
-**Linux / macOS**
-
-```bash
-source .venv/bin/activate
-```
-
-Install dependencies.
-(requirements.txt contains extra dependencies because I built this project in a shared virtual environment by mistake)
-
-```bash
-pip install -r requirements.txt
-```
-
-Configure the environment variables.
-
-```bash
-cp .env.example .env
-```
-
-Run the backend.
-
-```bash
-uvicorn app.main:app --reload
-```
-
----
-
-## Frontend Setup
-
-Navigate to the frontend.
-
-```bash
-cd frontend
-```
-
-Install dependencies.
-
-```bash
-npm install
-```
-
-Start the development server.
-
-```bash
-npm run dev
-```
-
-The frontend will be available at:
-
-```text
-http://localhost:5173
-```
-
----
-
-# Environment Variables
-
-## Backend
-
-Create a `.env` file inside the backend directory.
-
-```env
-DATABASE_URL=postgresql+asyncpg://<username>:<password>@localhost:5432/fintrack
-
-SECRET_KEY=your_secret_key
-
-ALGORITHM=HS256
-
-ACCESS_TOKEN_EXPIRE_MINUTES=30
-```
 
 ---
 
