@@ -502,6 +502,184 @@ The backend exposes a RESTful API built with FastAPI. All protected endpoints re
 
 ---
 
+# Running Locally
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- Python 3.13+
+- Node.js 22+ (or the version compatible with this project)
+- Git
+
+---
+
+## 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd FinTrackAPI
+```
+
+---
+
+## 2. Backend Setup
+
+Navigate to the backend directory:
+
+```bash
+cd backend
+```
+
+### Create a Virtual Environment
+
+**Windows (PowerShell)**
+
+```powershell
+python -m venv ../.venv
+..\ .venv\Scripts\Activate.ps1
+```
+
+If PowerShell blocks script execution:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
+
+then activate again.
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Configure Environment Variables
+
+Copy:
+
+```
+.env.example
+```
+
+to
+
+```
+.env
+```
+
+Fill in the required values:
+
+- `DATABASE_URL`
+- `SECRET_KEY`
+
+---
+
+### Run the Backend
+
+```bash
+uvicorn main:app --reload
+```
+
+The backend will be available at:
+
+```
+http://localhost:8000
+```
+
+Swagger (API) documentation:
+
+```
+http://localhost:8000/docs
+```
+
+---
+
+## 3. Frontend Setup
+
+Open a new terminal.
+
+Navigate to the frontend:
+
+```bash
+cd frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+---
+
+### Configure Environment Variables
+
+Copy:
+
+```
+.env.example
+```
+
+to
+
+```
+.env
+```
+
+Ensure:
+
+```env
+VITE_API_URL=http://localhost:8000
+```
+
+---
+
+### Run the Frontend
+
+```bash
+npm run dev
+```
+
+The application will be available at:
+
+```
+http://localhost:5173
+```
+
+---
+
+## Troubleshooting
+
+### Backend won't start
+
+- Verify your `.env` file exists inside `backend/`.
+- Ensure `DATABASE_URL` and `SECRET_KEY` are set.
+
+### Frontend can't connect
+
+Verify:
+
+```env
+VITE_API_URL=http://localhost:8000
+```
+
+The backend must be running before starting the frontend.
+
+### Missing dependencies
+
+Backend:
+
+```bash
+pip install -r requirements.txt
+```
+
+Frontend:
+
+```bash
+npm install
+```
+
 # Acknowledgements
 
 This project focuses not only on implementing features but also on applying software engineering principles such as clean architecture, modular design, separation of concerns, and maintainable code.
